@@ -47,3 +47,5 @@ next-env.d.ts
 
 # Local temp files
 temp/
+.history/
+draffly_landing_page_copy.md

@@ -5,13 +5,18 @@ import Link from "next/link";
 import { ArrowRightIcon, CheckIcon, LogoIcon, MenuIcon, PlayIcon, StarIcon } from "@/components/icons";
 import type { PlanTier, UseCase } from "@/types/draffly";
 
-const productPillars = ["AI Chat", "Agent Pipeline", "Library", "Calendar", "Analytics", "Competitors", "Billing", "Settings"];
+const proofPills = [
+  "7-step agent pipeline, fully automated",
+  "4 approval channels including Slack and Discord",
+  "LinkedIn, Twitter/X, and Facebook publishing",
+  "BYOK unlocks unlimited content runs",
+];
 
 const planTiers: PlanTier[] = [
   {
     name: "Free",
-    tag: "No card required",
-    description: "Explore the product with core generation limits.",
+    tag: "Try the full platform at no cost.",
+    description: "3 content runs a month. No card needed.",
     monthlyPrice: 0,
     yearlyPrice: 0,
     quota: "1 workspace - 1 social account - 3 AI content runs / month",
@@ -20,8 +25,8 @@ const planTiers: PlanTier[] = [
   },
   {
     name: "Basic",
-    tag: "$119.99 yearly",
-    description: "Solo creators getting consistent content out every month.",
+    tag: "For solo creators who publish consistently.",
+    description: "12 runs a month. Everything you need to stay on a schedule.",
     monthlyPrice: 11.99,
     yearlyPrice: 119.99,
     quota: "1 workspace - 1 social account - 12 AI content runs / month",
@@ -31,7 +36,7 @@ const planTiers: PlanTier[] = [
   {
     name: "Plus",
     tag: "Most popular",
-    description: "Growing brands that need analytics and more connected accounts.",
+    description: "For growing brands that need more accounts and real analytics.",
     monthlyPrice: 29.99,
     yearlyPrice: 299.99,
     quota: "3 workspaces - 5 social accounts - 20 AI content runs / month",
@@ -40,8 +45,8 @@ const planTiers: PlanTier[] = [
   },
   {
     name: "Pro",
-    tag: "$999.99 yearly",
-    description: "Teams and power users who need the highest limits and every channel.",
+    tag: "For teams and power users running high-volume content ops.",
+    description: "15 accounts, 28 runs, 30 images a month, every approval channel.",
     monthlyPrice: 99.99,
     yearlyPrice: 999.99,
     quota: "10 workspaces - 15 social accounts - 28 AI content runs / month",
@@ -52,27 +57,26 @@ const planTiers: PlanTier[] = [
 const useCases: UseCase[] = [
   {
     name: "Solo creators",
-    role: "Draft faster, publish consistently",
-    quote: "Use Friendly, Witty, Authoritative, Inspirational, or custom tones with formats like storytelling, how-to guides, listicles, and case studies.",
+    role: "You don't need a team. You need a system.",
+    quote: "Pick your tone, format, and posting account. Run the agent. Review the draft, approve it, and let Draffly post it. Spend less time writing and more time on the work that actually moves your numbers.",
   },
   {
     name: "Marketing operators",
-    role: "Coordinate content pipelines",
-    quote: "Run repeatable workflows that save research, strategy, draft content, visual briefs, approval status, publish metadata, and library history.",
+    role: "Repeatable pipelines without the overhead.",
+    quote: "Set up workspaces for each client or brand. Configure their tone, accounts, and approval routing separately. Every run saves a full audit trail: research, strategy, content, approval status, and publish metadata.",
   },
   {
     name: "Growth teams",
-    role: "Connect content to outcomes",
-    quote: "Monitor impressions, clicks, engagement, shares, platform mix, competitor profiles, referrals, invoices, and subscription usage.",
+    role: "Content that connects to outcomes.",
+    quote: "Track impressions, engagement, and shares across platforms. Add competitor profiles and see how your content compares. Use the calendar to spot gaps before they happen.",
   },
 ];
 
 const navItems = [
   { label: "Features", href: "#features" },
   { label: "Plans", href: "#plans" },
-  { label: "Library", href: "/library" },
-  { label: "Calendar", href: "/content-calendar" },
-  { label: "Billing", href: "/billing" },
+  { label: "How it works", href: "#how-it-works" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export function Navigation() {
@@ -94,11 +98,11 @@ export function Navigation() {
             ))}
           </div>
           <div className="hidden items-center gap-3 md:flex">
-            <a className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-800" href="/settings">
-              Settings
+            <a className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-800" href="/plans">
+              View Plans
             </a>
-            <a className="rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 px-4 py-2 text-sm font-semibold text-white shadow-lg transition hover:brightness-110" href="/ai-agent">
-              Run Agent
+            <a className="rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 px-4 py-2 text-sm font-semibold text-white shadow-lg transition hover:brightness-110" href="/plans">
+              Start for Free
             </a>
           </div>
           <button aria-label="Toggle menu" type="button" onClick={() => setOpen((value) => !value)} className="rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-800 md:hidden">
@@ -112,11 +116,11 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
-            <a href="/settings" className="text-sm font-medium text-slate-700">
-              Settings
+            <a href="/plans" className="text-sm font-medium text-slate-700">
+              View Plans
             </a>
-            <a href="/ai-agent" className="rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 px-4 py-3 text-center text-sm font-semibold text-white">
-              Run Agent
+            <a href="/plans" className="rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 px-4 py-3 text-center text-sm font-semibold text-white">
+              Start for Free
             </a>
           </div>
         ) : null}
@@ -136,26 +140,26 @@ export function HeroSection() {
         <div className="mx-auto mb-[60px] max-w-[1040px] text-center">
           <div className="mx-auto mb-7 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-sm font-semibold text-[#0A66C2] shadow-sm">
             <span className="h-2 w-2 rounded-full bg-emerald-500" />
-            AI content operations with real plan limits and publishing controls
+            From one topic to a published post. No manual steps.
           </div>
           <h1 className="font-[family-name:var(--font-poppins)] text-5xl font-bold leading-[.95] tracking-[-0.04em] text-slate-900 sm:text-6xl lg:text-[80px]">
-            Draft, plan, and publish
-            <span className="block bg-[linear-gradient(110deg,#0A66C2_0%,#3B5BDB_45%,#1e293b_100%)] bg-clip-text text-transparent">with autonomous AI.</span>
+            The AI that researches,
+            <span className="block bg-[linear-gradient(110deg,#0A66C2_0%,#3B5BDB_45%,#1e293b_100%)] bg-clip-text text-transparent">writes, approves, and posts for you.</span>
           </h1>
           <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
-            Draffly helps authenticated users chat with an AI assistant, configure tone and format preferences, run an autonomous content pipeline, save outputs to a searchable library, schedule posts, track billing usage, and publish through connected social accounts.
+            Draffly runs a full content pipeline: research, strategy, draft, visuals, approval, and publishing. You review, approve, and move on. Everything gets saved to your library automatically and published to your social media.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="/ai-agent" className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-800 to-slate-700 px-7 py-4 text-base font-semibold text-white shadow-xl transition hover:brightness-110">
-              Run the AI Agent
+            <a href="/plans" className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-800 to-slate-700 px-7 py-4 text-base font-semibold text-white shadow-xl transition hover:brightness-110">
+              Start for Free
             </a>
-            <Link href="/" className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-7 py-4 text-base font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:shadow-md">
-              <PlayIcon className="h-4 w-4" /> Open AI Chat
-            </Link>
+            <a href="#how-it-works" className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-7 py-4 text-base font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:shadow-md">
+              <PlayIcon className="h-4 w-4" /> See how it works
+            </a>
           </div>
           <div className="mt-7 flex items-center justify-center gap-4">
             <div className="flex text-amber-400">{Array.from({ length: 5 }).map((_, index) => <StarIcon key={index} className="h-5 w-5" />)}</div>
-            <div className="text-left text-sm leading-tight"><strong className="block text-slate-900">Free, Basic, Plus, Pro</strong><span className="text-slate-500">Usage, billing, and feature gates built into the product</span></div>
+            <div className="text-left text-sm leading-tight"><strong className="block text-slate-900">Free forever plan available</strong><span className="text-slate-500">No card required to start</span></div>
           </div>
         </div>
         <DashboardMockup />
@@ -169,8 +173,10 @@ function DashboardMockup() {
     ["Research", "Complete", "w-full"],
     ["Strategy", "Complete", "w-full"],
     ["Content", "Running", "w-[68%]"],
-    ["Visual", "Queued", "w-[24%]"],
+    ["Visual Brief", "Queued", "w-[24%]"],
     ["Approval", "Waiting", "w-[12%]"],
+    ["Publish", "Next", "w-[8%]"],
+    ["Library", "Next", "w-[8%]"],
   ];
 
   return (
@@ -191,11 +197,11 @@ function DashboardMockup() {
           </aside>
           <div className="p-5 sm:p-7">
             <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-              <div><h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">Run AI Agent</h3><p className="text-sm text-slate-500">Topic: 5 tips for remote work - output streaming</p></div>
-              <span className="rounded-xl bg-[#0A66C2] px-4 py-2 text-sm font-semibold text-white">Respond</span>
+              <div><h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">One topic in. Published post out.</h3><p className="text-sm text-slate-500">Research - Strategy - Content - Visual Brief - Approval - Publish - Library</p></div>
+              <span className="rounded-xl bg-[#0A66C2] px-4 py-2 text-sm font-semibold text-white">Approve</span>
             </div>
             <div className="mb-5 grid gap-3 sm:grid-cols-3">
-              {[["STEPS", "7", "Research to library"], ["ACCOUNTS", "5", "Plus plan social limit"], ["USAGE", "20", "AI runs / month on Plus"]].map(([label, value, helper]) => (
+              {[["PIPELINE", "7 steps", "Fully automated"], ["PUBLISHING", "3 channels", "LinkedIn, X, Facebook"], ["BYOK", "No caps", "Use your OpenRouter key"]].map(([label, value, helper]) => (
                 <div key={label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"><p className="text-[11px] font-bold tracking-wide text-slate-400">{label}</p><div className="mt-2"><strong className="text-2xl text-slate-900">{value}</strong><p className="mt-1 text-xs font-semibold text-slate-500">{helper}</p></div></div>
               ))}
             </div>
@@ -208,15 +214,15 @@ function DashboardMockup() {
                   </div>
                 ))}
               </div>
-              <div className="rounded-2xl bg-gradient-to-br from-[#0A66C2] to-[#3B5BDB] p-5 text-white shadow-xl"><p className="text-sm text-blue-100">Selected setup</p><p className="mt-3 text-3xl font-bold">Friendly - Storytelling</p><p className="mt-4 text-sm leading-6 text-blue-50">Posting to a connected LinkedIn, Twitter/X, or Facebook account after approval.</p></div>
+              <div className="rounded-2xl bg-gradient-to-br from-[#0A66C2] to-[#3B5BDB] p-5 text-white shadow-xl"><p className="text-sm text-blue-100">Review queue</p><p className="mt-3 text-3xl font-bold">Approve or request edits</p><p className="mt-4 text-sm leading-6 text-blue-50">The post publishes when you say go, then saves the full run to your library.</p></div>
             </div>
           </div>
         </div>
       </div>
       <div className="mt-5 grid gap-4 md:grid-cols-3">
-        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-[#0A66C2]">BYOK CHAT</p><p className="mt-3 text-sm text-slate-700">OpenRouter keys, base URL, and default model are configured from Settings.</p></div>
-        <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-[#0A66C2]">CONTENT OPS</p><p className="mt-3 text-sm text-slate-700">Search, filter, star, copy, delete, and inspect agent history in the library.</p></div>
-        <div className="rounded-2xl border border-emerald-100 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-emerald-600">APPROVALS</p><p className="mt-3 text-sm text-slate-700">Use in-app, email, Telegram, and on higher plans Slack or Discord approval paths.</p></div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-[#0A66C2]">BYOK</p><p className="mt-3 text-sm text-slate-700">Connect your OpenRouter key in Settings and content and image caps are lifted on paid plans.</p></div>
+        <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-[#0A66C2]">LIBRARY</p><p className="mt-3 text-sm text-slate-700">Every run saves title, platform, content, tags, status, word count, and pipeline history.</p></div>
+        <div className="rounded-2xl border border-emerald-100 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-emerald-600">APPROVALS</p><p className="mt-3 text-sm text-slate-700">Route approvals to in-app, email, Telegram, Slack, or Discord depending on your plan.</p></div>
       </div>
     </div>
   );
@@ -227,9 +233,9 @@ export function TrustedBySection() {
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-10">
         <div className="flex flex-col items-center justify-center gap-8 lg:flex-row">
-          <p className="text-center text-[11px] font-bold tracking-[.22em] text-slate-400">BUILT AROUND THE DRAFFLY WORKSPACE</p>
-          <div className="grid w-full grid-cols-2 items-center gap-3 sm:grid-cols-4 lg:flex lg:w-auto lg:gap-3">
-            {productPillars.map((pillar) => <span key={pillar} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-center text-xs font-bold text-slate-600">{pillar}</span>)}
+          <p className="text-center text-[11px] font-bold tracking-[.22em] text-slate-400">BUILT FOR PEOPLE WHO PUBLISH CONSISTENTLY, NOT OCCASIONALLY</p>
+          <div className="grid w-full grid-cols-1 items-center gap-3 sm:grid-cols-2 lg:flex lg:w-auto lg:gap-3">
+            {proofPills.map((pillar) => <span key={pillar} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-center text-xs font-bold text-slate-600">{pillar}</span>)}
           </div>
         </div>
       </div>
@@ -239,15 +245,15 @@ export function TrustedBySection() {
 
 export function HowItWorksSection() {
   const steps = [
-    ["01", "CONFIGURE", "Set the workspace defaults.", "Add an OpenRouter API key, choose a base URL and default model, set workspace language and platform defaults, and connect publishing accounts."],
-    ["02", "ORCHESTRATE", "Run the autonomous pipeline.", "Pick publishing, tone, format, and competitors, then run the agent through research, strategy, content, visual, approval, publish, and library history."],
-    ["03", "OPERATE", "Review the system of record.", "Use billing usage, invoices, analytics, library search, calendar statuses, competitor profiles, and affiliate wallet views to manage the content operation."],
+    ["01", "CONFIGURE", "Tell Draffly how you work.", "Connect your OpenRouter key, choose your default model, link your LinkedIn or Twitter account, and set your tone and format preferences. Do it once. Every run after uses these settings automatically."],
+    ["02", "RUN THE AGENT", "Pick a topic. The agent does the rest.", "Give it a topic or prompt. The pipeline kicks off: research, strategy, content draft, visual brief, then routes to your approval channel. You approve or request edits. It publishes when you say go."],
+    ["03", "OPERATE", "Everything tracked. Nothing lost.", "Every run saves to your library. Your calendar shows what's live, scheduled, and in draft. Analytics shows what's working. Billing shows exactly where you are on your plan."],
   ];
 
   return (
     <section id="how-it-works" className="bg-gradient-to-b from-[#F3F6F8] to-white px-6 pb-20 pt-24">
       <div className="mx-auto max-w-[1100px]">
-        <div className="mb-16 text-center"><p className="mb-3 text-[11px] font-bold tracking-[.22em] text-[#3B5BDB]">HOW IT WORKS</p><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">The frontend mirrors the product system.</h2><p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">Draffly is not only a landing page; it is a workspace with concrete settings, limits, approvals, library records, analytics, and billing state.</p></div>
+        <div className="mb-16 text-center"><p className="mb-3 text-[11px] font-bold tracking-[.22em] text-[#3B5BDB]">HOW IT WORKS</p><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Set it up once. Run it on repeat.</h2><p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">No juggling tools. No copy-pasting between apps. Just a topic in, and a post out the other side.</p></div>
         <div className="relative grid gap-6 lg:grid-cols-3">
           <p className="absolute -top-11 left-3 hidden rotate-[-7deg] font-[family-name:var(--font-caveat)] text-2xl font-semibold text-[#0A66C2] lg:block">Start in settings</p>
           {steps.map(([number, label, title, body]) => (
@@ -266,7 +272,7 @@ export function StatsSection() {
     <section className="relative overflow-hidden bg-slate-900 px-6 py-16 text-white">
       <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(10,102,194,.18),transparent_40%),radial-gradient(circle_at_80%_50%,rgba(59,91,219,.15),transparent_40%)]" />
       <div className="relative mx-auto grid max-w-[1100px] gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
-        {[["4 plans", "Free, Basic, Plus, Pro"], ["7 agents", "Research through library save"], ["8 settings", "Profile, keys, security, integrations"], ["BYOK", "Content and image caps waived with API keys"]].map(([value, label]) => <div key={label}><p className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-white">{value}</p><p className="mt-2 text-sm text-slate-400">{label}</p></div>)}
+        {[["7 steps", "Research to saved library item"], ["5 channels", "In-app, email, Telegram, Slack, Discord"], ["3 platforms", "LinkedIn, Twitter/X, Facebook"], ["BYOK", "Use your OpenRouter key and skip caps"]].map(([value, label]) => <div key={label}><p className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-white">{value}</p><p className="mt-2 text-sm text-slate-400">{label}</p></div>)}
       </div>
     </section>
   );
@@ -275,32 +281,32 @@ export function StatsSection() {
 export function FeaturesSection() {
   return (
     <section id="features" className="mx-auto max-w-7xl overflow-hidden px-8 py-[120px]">
-      <div className="mb-16 text-center"><span className="inline-block rounded-full bg-blue-100 px-[14px] py-1.5 text-[11px] font-semibold uppercase leading-[16.5px] text-[#3B5BDB]">Product pillars</span><h2 className="mx-auto mt-[18px] max-w-5xl font-[family-name:var(--font-poppins)] text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[63px] lg:leading-[64px]">A workspace with the real Draffly surfaces.</h2><p className="mx-auto mt-[14px] max-w-[700px] text-[19px] leading-[28.5px] text-slate-600">The frontend should talk about chat sessions, agent configuration, saved runs, calendar state, billing limits, settings, competitors, and affiliates.</p></div>
+      <div className="mb-16 text-center"><span className="inline-block rounded-full bg-blue-100 px-[14px] py-1.5 text-[11px] font-semibold uppercase leading-[16.5px] text-[#3B5BDB]">FEATURES</span><h2 className="mx-auto mt-[18px] max-w-5xl font-[family-name:var(--font-poppins)] text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[63px] lg:leading-[64px]">Not a draft generator. A full content pipeline.</h2><p className="mx-auto mt-[14px] max-w-[700px] text-[19px] leading-[28.5px] text-slate-600">Research, strategy, content, visuals, approvals, publishing, library, calendar, analytics, billing, and BYOK in one workflow.</p></div>
       <div className="grid gap-5 lg:grid-cols-3">
         <FeatureChat />
         <FeatureAgent />
         <FeatureCalendar />
       </div>
       <div className="mt-5 grid gap-5 lg:grid-cols-3">
-        <FeatureCard title="Library and history" eyebrow="CONTENT OPS" body="Store title, platform, content, tags, starred state, word count, approval status, thread ID, and every agent step behind the saved item." />
-        <FeatureCard title="Analytics and competitors" eyebrow="INSIGHTS" body="Show impressions, clicks, engagement, shares, platform mix, active days, competitor websites, social profiles, detail views, and comparisons." />
-        <FeatureCard title="Billing and usage" eyebrow="MONETIZATION" body="Expose plan, amount, renewal state, invoices, Dodo refresh, content runs, workspaces, social accounts, and image generation allowance." />
+        <FeatureCard title="Every post you've ever run, searchable." eyebrow="CONTENT LIBRARY" body="Every agent run saves the full output: title, platform, content, tags, approval status, word count, and all seven agent steps. Search, filter, star, copy, or delete anytime." />
+        <FeatureCard title="Track what's actually working." eyebrow="ANALYTICS & COMPETITORS" body="Impressions, clicks, engagement, shares, and platform mix for your published content. Add competitor profiles and compare their activity directly against yours." />
+        <FeatureCard title="Always know where you are on your plan." eyebrow="BILLING & USAGE" body="See your active plan, renewal date, remaining content runs, image allowance, connected accounts, and invoices, all in one place. Upgrade, downgrade, or cancel without contacting anyone." />
       </div>
       <div className="mt-5 grid gap-5 lg:grid-cols-3">
-        <SmallFeature title="Social OAuth integrations" body="Connect multiple LinkedIn, Twitter/X, and Facebook accounts; Instagram is listed as a future integration." />
-        <SmallFeature title="Approval-first automation" body="Support in-app, email, Telegram, Slack, Discord, WhatsApp, and Telegram bot configuration paths in the product story." />
-        <SmallFeature title="Affiliate-ready workflows" body="Include invite-only affiliate access with referral links, balances, active referrals, conversions, commissions, and future withdrawals." />
+        <SmallFeature title="Approve from wherever you actually check messages." body="Route approvals to in-app, email, Telegram, Slack, or Discord. On Pro, add WhatsApp. Your pipeline does not stop because you missed a notification." />
+        <SmallFeature title="Use your own API key. Remove the caps." body="Connect your OpenRouter key in Settings and the content and image generation limits tied to your plan are lifted. You pay your provider directly for what you use." />
+        <SmallFeature title="See what's live, scheduled, and coming up." body="Monthly and timeline views for LinkedIn posts, Twitter threads, and blog articles. See what's going out and when, without opening a spreadsheet." />
       </div>
     </section>
   );
 }
 
 function FeatureChat() {
-  return <div className="min-h-[470px] overflow-hidden rounded-[22px] bg-[linear-gradient(160deg,#0f172a_0%,#1e293b_60%,#0A66C2_180%)] p-7 text-white shadow-[0_30px_60px_-20px_rgba(15,23,42,.35)]"><p className="text-xs font-bold text-blue-200">AI CHAT</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold">Streaming assistant</h3><p className="mt-3 text-sm leading-6 text-slate-300">Chat starts on / and continues through /chat/:sessionId, backed by your configured OpenRouter-compatible provider.</p><div className="mt-7 rounded-2xl bg-white/10 p-4"><p className="text-xs font-bold text-blue-200">DEFAULT MODEL</p><p className="mt-2 text-sm">google/gemini-2.5-flash</p></div><div className="mt-4 rounded-2xl bg-white p-4 text-slate-900"><p className="text-xs text-slate-500">API settings</p><p className="mt-3 text-sm leading-6">OpenRouter API key, base URL, and provider configuration are managed from Settings - API Keys.</p><p className="mt-3 text-sm font-semibold text-[#0A66C2]">BYOK can waive content and image caps</p></div></div>;
+  return <div className="min-h-[470px] overflow-hidden rounded-[22px] bg-[linear-gradient(160deg,#0f172a_0%,#1e293b_60%,#0A66C2_180%)] p-7 text-white shadow-[0_30px_60px_-20px_rgba(15,23,42,.35)]"><p className="text-xs font-bold text-blue-200">AI CHAT</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold">A writing assistant that knows your workspace.</h3><p className="mt-3 text-sm leading-6 text-slate-300">Your AI chat runs on your own OpenRouter key. Switch models, keep your session history, and use it alongside the agent pipeline.</p><div className="mt-7 rounded-2xl bg-white/10 p-4"><p className="text-xs font-bold text-blue-200">DEFAULT</p><p className="mt-2 text-sm">Google Gemini 2.5 Flash. Swap to any OpenRouter-compatible model from Settings.</p></div><div className="mt-4 rounded-2xl bg-white p-4 text-slate-900"><p className="text-xs text-slate-500">BYOK</p><p className="mt-3 text-sm leading-6">Already paying for OpenRouter? Connect your key to use your preferred model and remove content and image caps.</p><p className="mt-3 text-sm font-semibold text-[#0A66C2]">Use your own API key. Remove the caps.</p></div></div>;
 }
 
 function FeatureAgent() {
-  return <div className="min-h-[470px] overflow-hidden rounded-[22px] border border-slate-200 bg-white p-7 shadow-[0_30px_60px_-20px_rgba(15,23,42,.1)]"><p className="text-xs font-bold text-[#3B5BDB]">AI AGENT</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">Configurable content run</h3><p className="mt-3 text-sm leading-6 text-slate-600">Users choose publish account, auto-publish, approval channel, tones, formats, and optional competitors before running the agent.</p><div className="mt-7 space-y-3">{["Publish account", "Tone", "Format", "Competitor style", "Approval channel"].map((item, index) => <div key={item} className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 p-4"><p className="font-semibold text-slate-900">{item}</p><span className={`rounded-full px-3 py-1 text-xs font-bold ${index < 3 ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-[#0A66C2]"}`}>{index < 3 ? "SET" : "OPTIONAL"}</span></div>)}</div></div>;
+  return <div className="min-h-[470px] overflow-hidden rounded-[22px] border border-slate-200 bg-white p-7 shadow-[0_30px_60px_-20px_rgba(15,23,42,.1)]"><p className="text-xs font-bold text-[#3B5BDB]">AI AGENT PIPELINE</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">Seven agents. One run. Full post.</h3><p className="mt-3 text-sm leading-6 text-slate-600">Configure your publish account, tone, format, approval channel, and optional competitor style. Hit run. The agent handles research through publishing.</p><div className="mt-7 space-y-3">{["Research", "Strategy", "Content", "Visual Brief", "Approval", "Publish", "Saved to Library"].map((item, index) => <div key={item} className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 p-4"><p className="font-semibold text-slate-900">{item}</p><span className={`rounded-full px-3 py-1 text-xs font-bold ${index < 4 ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-[#0A66C2]"}`}>{index < 4 ? "AGENT" : "FLOW"}</span></div>)}</div></div>;
 }
 
 function FeatureCalendar() {
@@ -317,11 +323,11 @@ function SmallFeature({ title, body }: { title: string; body: string }) {
 }
 
 export function SecuritySection() {
-  return <section className="mx-auto max-w-7xl px-6 py-24"><div className="grid items-center gap-12 rounded-[24px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-8 lg:grid-cols-2 lg:p-12"><div><p className="text-xs font-bold tracking-[.2em] text-[#3B5BDB]">SETTINGS & GOVERNANCE</p><h2 className="mt-4 font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Settings are a major frontend surface.</h2><p className="mt-5 text-lg leading-8 text-slate-600">The dashboard reference has dedicated tabs for profile, integrations, API keys, notifications, appearance, workspace defaults, and security. The marketing frontend now reflects those real controls instead of generic copy.</p><div className="mt-8 space-y-4">{["API keys: OpenRouter key, base URL, and default model", "Workspace: name, default platform, content language, auto-save", "Notifications: workflow complete, agent errors, weekly digest, new features", "Security: 2FA, session timeout, active sessions, export/reset/delete flows"].map((item) => <p key={item} className="flex gap-3 text-slate-700"><CheckIcon className="mt-1 h-5 w-5 shrink-0 text-emerald-600" />{item}</p>)}</div></div><div className="rounded-[22px] border border-slate-200 bg-white p-6 shadow-xl"><p className="text-xs font-bold tracking-[.16em] text-slate-400">WORKSPACE READINESS</p>{[["OpenRouter key", "Configured", "100%"], ["Social accounts", "5 / 5 on Plus", "100%"], ["Content runs", "12 / 20 this month", "60%"]].map(([label, value, width]) => <div key={label} className="mt-5"><div className="mb-2 flex justify-between text-sm"><span className="text-slate-600">{label}</span><strong className="text-slate-900">{value}</strong></div><div className="h-2 rounded-full bg-slate-100"><div className={`h-2 rounded-full bg-gradient-to-r from-[#0A66C2] to-emerald-500 ${width === "100%" ? "w-full" : "w-[60%]"}`} /></div></div>)}<p className="mt-6 rounded-2xl bg-emerald-50 p-4 text-sm font-semibold text-emerald-700">Ready for chat, configured agent runs, approval routing, and social publishing.</p></div></div></section>;
+  return <section className="mx-auto max-w-7xl px-6 py-24"><div className="grid items-center gap-12 rounded-[24px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-8 lg:grid-cols-2 lg:p-12"><div><p className="text-xs font-bold tracking-[.2em] text-[#3B5BDB]">BYOK</p><h2 className="mt-4 font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Already paying for OpenRouter? Your content and image caps go away.</h2><p className="mt-5 text-lg leading-8 text-slate-600">Connect your OpenRouter key in Settings and the content and image generation limits tied to your plan are lifted. You pay your provider directly for what you use.</p><div className="mt-8 space-y-4">{["Use your preferred OpenRouter-compatible model", "Keep chat session history alongside agent runs", "Lift content and image caps on paid plans", "Default model: Google Gemini 2.5 Flash"].map((item) => <p key={item} className="flex gap-3 text-slate-700"><CheckIcon className="mt-1 h-5 w-5 shrink-0 text-emerald-600" />{item}</p>)}</div></div><div className="rounded-[22px] border border-slate-200 bg-white p-6 shadow-xl"><p className="text-xs font-bold tracking-[.16em] text-slate-400">WORKSPACE READINESS</p>{[["OpenRouter key", "Configured", "100%"], ["Publishing accounts", "LinkedIn and X", "66%"], ["Content caps", "Lifted with BYOK", "100%"]].map(([label, value, width]) => <div key={label} className="mt-5"><div className="mb-2 flex justify-between text-sm"><span className="text-slate-600">{label}</span><strong className="text-slate-900">{value}</strong></div><div className="h-2 rounded-full bg-slate-100"><div className={`h-2 rounded-full bg-gradient-to-r from-[#0A66C2] to-emerald-500 ${width === "66%" ? "w-[66%]" : "w-full"}`} /></div></div>)}<p className="mt-6 rounded-2xl bg-emerald-50 p-4 text-sm font-semibold text-emerald-700">Plug in your OpenRouter key. Skip the limits.</p></div></div></section>;
 }
 
 export function PlansSection() {
-  return <section id="plans" className="bg-white"><div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8"><div className="text-center"><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-slate-900 sm:text-5xl">Actual Draffly plans and limits.</h2><p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">Plans match the dashboard catalog and server enforcement: content runs reset monthly, workspaces and social accounts are capped, and BYOK can lift content and image generation caps.</p></div><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">{planTiers.map((plan) => <PlanCard key={plan.name} plan={plan} />)}</div><p className="mt-12 text-center text-sm text-slate-500">Billing supports checkout, plan changes, downgrade confirmation, cancellation, Dodo sync, invoice search, and renewal status.</p></div></section>;
+  return <section id="plans" className="bg-white"><div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8"><div className="text-center"><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-slate-900 sm:text-5xl">Start free. Scale when you need to.</h2><p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">Every plan includes the full agent pipeline, content library, calendar, and approval routing. Higher plans add more accounts, runs, images, and approval channels.</p></div><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">{planTiers.map((plan) => <PlanCard key={plan.name} plan={plan} />)}</div><div className="mx-auto mt-12 max-w-3xl space-y-3 text-center text-sm text-slate-500"><p>All plans billed monthly or yearly. Yearly saves you two months. Cancel or change plans anytime from your dashboard.</p><p className="font-semibold text-[#0A66C2]">Already using OpenRouter? Connect your key in Settings and content and image caps are lifted on any paid plan.</p></div></div></section>;
 }
 
 function PlanCard({ plan }: { plan: PlanTier }) {
@@ -331,25 +337,27 @@ function PlanCard({ plan }: { plan: PlanTier }) {
 
 export function FaqSection() {
   const questions = [
-    ["What plans exist?", "Free, Basic, Plus, and Pro. Prices are $0, $11.99, $29.99, and $99.99 per month, with yearly prices of $0, $119.99, $299.99, and $999.99."],
-    ["What can users configure?", "Settings include profile, social integrations, API keys, notifications, appearance, workspace defaults, security, export/reset/delete account controls, and API provider settings."],
-    ["What does the agent pipeline ask for?", "Users configure publishing, auto-publish, approval channel, tone, content format, optional competitor style, and then submit a topic or prompt."],
-    ["What does billing track?", "Billing tracks subscription status, renewal or cancellation date, content runs, workspaces, connected social accounts, image allowance, invoices, and Dodo sync state."],
+    ["Do I need to bring my own AI API key?", "No. You can start without one. If you have an OpenRouter key, you can connect it in Settings to use your preferred model and remove content and image caps."],
+    ["Which social platforms can I publish to?", "LinkedIn, Twitter/X, and Facebook right now. Instagram is coming. You can connect multiple accounts and choose which one each agent run publishes to."],
+    ["How does the approval workflow work?", "After the agent finishes your draft, it routes to whatever approval channel you've configured: in-app, email, Telegram, Slack, or Discord. You review, approve or request edits, and the post publishes when you say go."],
+    ["What happens to my content runs after I use them?", "Runs reset monthly. Every completed run is saved to your library with the full pipeline history, so nothing gets lost."],
+    ["Can I change plans or cancel?", "Yes. Everything is self-serve from your billing dashboard. Upgrade, downgrade, or cancel without contacting support."],
+    ["What's the difference between Plus and Pro?", "Plus is designed for growing brands: 3 workspaces, 5 social accounts, 20 runs, analytics, and competitor tracking. Pro is for high-volume teams: 10 workspaces, 15 accounts, 28 runs, and every approval channel available."],
   ];
-  return <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="mb-16 text-center"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">Frequently Asked Questions</h2><p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">Concrete frontend facts pulled from the dashboard reference.</p></div><div className="mx-auto max-w-3xl"><div className="space-y-4">{questions.map(([question, answer]) => <div key={question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">{question}</h3><p className="mt-4 text-[15px] leading-7 text-slate-600">{answer}</p></div>)}</div><div className="mt-12 text-center"><p className="mb-3 text-slate-600">Ready to build the next content run?</p><a href="/ai-agent" className="inline-flex items-center gap-2 font-semibold text-slate-800 transition-colors hover:text-[#0A66C2]">Open the AI agent<ArrowRightIcon className="h-4 w-4" /></a></div></div></section>;
+  return <section id="faq" className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="mb-16 text-center"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">A few things people ask before signing up.</h2></div><div className="mx-auto max-w-3xl"><div className="space-y-4">{questions.map(([question, answer]) => <div key={question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">{question}</h3><p className="mt-4 text-[15px] leading-7 text-slate-600">{answer}</p></div>)}</div><div className="mt-12 text-center"><p className="mb-3 text-slate-600">Ready to build the next content run?</p><a href="/plans" className="inline-flex items-center gap-2 font-semibold text-slate-800 transition-colors hover:text-[#0A66C2]">Start for Free<ArrowRightIcon className="h-4 w-4" /></a></div></div></section>;
 }
 
 export function UseCasesSection() {
-  return <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="mb-16 text-center"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">Built for creator operations.</h2><p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">Draffly supports the people who need consistent social output without manual coordination overhead.</p></div><div className="grid gap-6 md:grid-cols-3">{useCases.map((item) => <div key={item.name} className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-[#0A66C2]/30 hover:shadow-lg"><div className="mb-5 flex items-center gap-4"><div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0A66C2] to-[#3B5BDB] text-lg font-bold text-white">{item.name.charAt(0)}</div><div><h3 className="font-bold text-slate-900">{item.name}</h3><p className="text-sm text-slate-500">{item.role}</p></div></div><p className="leading-7 text-slate-600">{item.quote}</p></div>)}</div></section>;
+  return <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="mb-16 text-center"><p className="mb-3 text-[11px] font-bold tracking-[.22em] text-[#3B5BDB]">WHO IT&apos;S BUILT FOR</p><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">Different people. Same problem.</h2></div><div className="grid gap-6 md:grid-cols-3">{useCases.map((item) => <div key={item.name} className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-[#0A66C2]/30 hover:shadow-lg"><div className="mb-5 flex items-center gap-4"><div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0A66C2] to-[#3B5BDB] text-lg font-bold text-white">{item.name.charAt(0)}</div><div><h3 className="font-bold text-slate-900">{item.name}</h3><p className="text-sm text-slate-500">{item.role}</p></div></div><p className="leading-7 text-slate-600">{item.quote}</p></div>)}</div></section>;
 }
 
 export function CtaSection() {
-  return <section className="px-6 py-24"><div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] bg-[#0a0f1c] px-8 py-20 text-center shadow-[0_30px_60px_-20px_rgba(15,23,42,.45)] lg:px-12"><div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(10,102,194,.35),transparent_28%),radial-gradient(circle_at_82%_22%,rgba(59,91,219,.25),transparent_25%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,.08),transparent_35%)]" /><svg aria-hidden="true" viewBox="0 0 1100 500" className="absolute inset-0 h-full w-full opacity-35"><path d="M80 400 C240 160 420 470 610 210 S880 130 1040 330" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 14" /><path d="M130 120 C360 260 650 50 980 160" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="5 18" /></svg><div className="relative"><p className="text-xs font-bold tracking-[.25em] text-blue-200">READY WHEN YOUR WORKSPACE IS</p><h2 className="mx-auto mt-5 max-w-3xl font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-white sm:text-6xl">Turn one topic into a tracked content operation.</h2><p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-300">Configure OpenRouter, connect social accounts, choose tone and format, run the agent, approve the draft, save history, publish, and monitor usage.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="/ai-agent" className="rounded-2xl bg-white px-7 py-4 font-semibold text-slate-900 shadow-xl transition hover:bg-blue-50">Run AI Agent</a><a href="/plans" className="rounded-2xl border border-white/20 px-7 py-4 font-semibold text-white transition hover:bg-white/10">View Plans</a></div><p className="mt-7 text-sm text-slate-400">Chat - Agent config - Library - Calendar - Billing - Competitors - Affiliates</p></div></div></section>;
+  return <section className="px-6 py-24"><div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] bg-[#0a0f1c] px-8 py-20 text-center shadow-[0_30px_60px_-20px_rgba(15,23,42,.45)] lg:px-12"><div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(10,102,194,.35),transparent_28%),radial-gradient(circle_at_82%_22%,rgba(59,91,219,.25),transparent_25%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,.08),transparent_35%)]" /><svg aria-hidden="true" viewBox="0 0 1100 500" className="absolute inset-0 h-full w-full opacity-35"><path d="M80 400 C240 160 420 470 610 210 S880 130 1040 330" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 14" /><path d="M130 120 C360 260 650 50 980 160" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="5 18" /></svg><div className="relative"><p className="text-xs font-bold tracking-[.25em] text-blue-200">YOUR FIRST RUN IS FREE</p><h2 className="mx-auto mt-5 max-w-3xl font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-white sm:text-6xl">Ready to stop doing this manually?</h2><p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-300">Set up takes five minutes. Connect your account, configure your settings, and run the agent on any topic.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="/plans" className="rounded-2xl bg-white px-7 py-4 font-semibold text-slate-900 shadow-xl transition hover:bg-blue-50">Start for Free</a><a href="/plans" className="rounded-2xl border border-white/20 px-7 py-4 font-semibold text-white transition hover:bg-white/10">View Plans</a></div><p className="mt-7 text-sm text-slate-400">No card required on the free plan. Cancel anytime on paid plans.</p></div></div></section>;
 }
 
 export function FooterSection() {
   const nav = ["AI Agent", "Library", "Calendar", "Analytics", "Competitors", "Billing", "Plans", "Settings"];
-  return <footer className="mt-20 border-t border-slate-200 bg-white"><div className="mx-auto max-w-7xl px-6 py-16 pb-8 lg:px-8"><div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-16"><div><div className="mb-5 flex items-center gap-2 font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900"><LogoIcon className="h-9 w-9" />Draffly</div><p className="max-w-xs text-sm leading-6 text-slate-500">Agentic AI-assisted social content operations for creators and marketing teams.</p><p className="mt-6 text-sm text-slate-500">(c) 2026 Draffly.<br />All rights reserved.</p></div><FooterColumn title="PRODUCT" items={nav} /><FooterColumn title="WORKFLOWS" items={["AI Chat", "Agent Pipeline", "Content Ops", "Social Publishing"]} /><FooterColumn title="LEGAL" items={["Terms", "Privacy"]} /></div></div><div className="-mt-4 h-[45px] overflow-hidden sm:h-[88px] lg:h-[140px]"><h2 className="select-none bg-gradient-to-b from-slate-200 to-white bg-clip-text text-center font-[family-name:var(--font-poppins)] text-[56px] font-semibold leading-none tracking-wide text-transparent sm:text-[110px] lg:text-[176px]">Draffly</h2></div></footer>;
+  return <footer className="mt-20 border-t border-slate-200 bg-white"><div className="mx-auto max-w-7xl px-6 py-16 pb-8 lg:px-8"><div className="mb-14 max-w-3xl"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-slate-900">Stop patching together tools for something that should work end-to-end.</h2><p className="mt-4 text-lg leading-8 text-slate-600">Draffly handles the research, writing, approvals, and publishing in one place.</p><a href="/plans" className="mt-6 inline-block rounded-2xl bg-slate-900 px-7 py-4 font-semibold text-white transition hover:bg-slate-800">Start for Free</a></div><div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-16"><div><div className="mb-5 flex items-center gap-2 font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900"><LogoIcon className="h-9 w-9" />Draffly</div><p className="max-w-xs text-sm leading-6 text-slate-500">From one topic to a published post. No manual steps.</p><p className="mt-6 text-sm text-slate-500">(c) 2026 Draffly.<br />All rights reserved.</p></div><FooterColumn title="PRODUCT" items={nav} /><FooterColumn title="WORKFLOWS" items={["AI Chat", "Agent Pipeline", "Content Ops", "Social Publishing"]} /><FooterColumn title="LEGAL" items={["Terms", "Privacy"]} /></div></div><div className="-mt-4 h-[45px] overflow-hidden sm:h-[88px] lg:h-[140px]"><h2 className="select-none bg-gradient-to-b from-slate-200 to-white bg-clip-text text-center font-[family-name:var(--font-poppins)] text-[56px] font-semibold leading-none tracking-wide text-transparent sm:text-[110px] lg:text-[176px]">Draffly</h2></div></footer>;
 }
 
 function FooterColumn({ title, items }: { title: string; items: string[] }) {

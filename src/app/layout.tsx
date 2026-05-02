@@ -32,19 +32,19 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://draffly.ai"),
-  title: "Draffly | Agentic AI Social Content Operations",
+  title: "Draffly | Your Content Team, Minus the Team",
   description:
-    "Configure OpenRouter, run AI content agents, save library history, schedule posts, connect social accounts, track billing usage, and monitor analytics.",
+    "Draffly researches, writes, routes approvals, publishes to social media, and saves every run to your content library automatically.",
   openGraph: {
-    title: "Draffly | Agentic AI Social Content Operations",
+    title: "Draffly | Your Content Team, Minus the Team",
     description:
-      "Configure OpenRouter, run AI content agents, save library history, schedule posts, connect social accounts, track billing usage, and monitor analytics.",
+      "Draffly researches, writes, routes approvals, publishes to social media, and saves every run to your content library automatically.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Draffly | Agentic AI Social Content Operations",
+    title: "Draffly | Your Content Team, Minus the Team",
     description:
-      "Configure OpenRouter, run AI content agents, save library history, schedule posts, connect social accounts, track billing usage, and monitor analytics.",
+      "Draffly researches, writes, routes approvals, publishes to social media, and saves every run to your content library automatically.",
   },
 };
 
