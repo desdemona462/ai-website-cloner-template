@@ -1,7 +1,6 @@
 export interface PlanTier {
   name: string;
   tag: string;
-  description: string;
   monthlyPrice: number;
   yearlyPrice: number;
   quota: string;

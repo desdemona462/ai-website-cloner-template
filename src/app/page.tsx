@@ -10,7 +10,6 @@ import {
   SecuritySection,
   StatsSection,
   UseCasesSection,
-  TrustedBySection,
 } from "@/components/draffly-sections";
 
 export default function Home() {

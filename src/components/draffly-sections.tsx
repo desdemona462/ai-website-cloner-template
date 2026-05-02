@@ -15,8 +15,7 @@ const proofPills = [
 const planTiers: PlanTier[] = [
   {
     name: "Free",
-    tag: "Try the full platform at no cost.",
-    description: "3 content runs a month. No card needed.",
+    tag: "Explore the platform. No Credit Card needed.",
     monthlyPrice: 0,
     yearlyPrice: 0,
     quota: "1 workspace - 1 social account - 3 AI content runs / month",
@@ -25,8 +24,7 @@ const planTiers: PlanTier[] = [
   },
   {
     name: "Basic",
-    tag: "For solo creators who publish consistently.",
-    description: "12 runs a month. Everything you need to stay on a schedule.",
+    tag: "For solo creators",
     monthlyPrice: 11.99,
     yearlyPrice: 119.99,
     quota: "1 workspace - 1 social account - 12 AI content runs / month",
@@ -35,8 +33,7 @@ const planTiers: PlanTier[] = [
   },
   {
     name: "Plus",
-    tag: "Most popular",
-    description: "For growing brands that need more accounts and real analytics.",
+    tag: "For those who need more accounts and real analytics.",
     monthlyPrice: 29.99,
     yearlyPrice: 299.99,
     quota: "3 workspaces - 5 social accounts - 20 AI content runs / month",
@@ -45,8 +42,7 @@ const planTiers: PlanTier[] = [
   },
   {
     name: "Pro",
-    tag: "For teams and power users running high-volume content ops.",
-    description: "15 accounts, 28 runs, 30 images a month, every approval channel.",
+    tag: "For those serious about growth and analytics with advance features.",
     monthlyPrice: 99.99,
     yearlyPrice: 999.99,
     quota: "10 workspaces - 15 social accounts - 28 AI content runs / month",
@@ -75,8 +71,7 @@ const useCases: UseCase[] = [
 const navItems = [
   { label: "Features", href: "#features" },
   { label: "Plans", href: "#plans" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "FAQ", href: "#faq" },
+  { label: "How much you will save", href: "#saving" },
 ];
 
 export function Navigation() {
@@ -99,7 +94,7 @@ export function Navigation() {
           </div>
           <div className="hidden items-center gap-3 md:flex">
             <a className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-800" href="/plans">
-              View Plans
+              Login
             </a>
             <a className="rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 px-4 py-2 text-sm font-semibold text-white shadow-lg transition hover:brightness-110" href="/plans">
               Start for Free
@@ -117,7 +112,7 @@ export function Navigation() {
               </a>
             ))}
             <a href="/plans" className="text-sm font-medium text-slate-700">
-              View Plans
+              Login
             </a>
             <a href="/plans" className="rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 px-4 py-3 text-center text-sm font-semibold text-white">
               Start for Free
@@ -143,11 +138,11 @@ export function HeroSection() {
             You give it a topic. It handles the rest.
           </div>
           <h1 className="font-[family-name:var(--font-poppins)] text-5xl font-bold leading-[.95] tracking-[-0.04em] text-slate-900 sm:text-6xl lg:text-[80px]">
-            The AI that researches,
-            <span className="block bg-[linear-gradient(110deg,#0A66C2_0%,#3B5BDB_45%,#1e293b_100%)] bg-clip-text text-transparent">writes, approves, and posts for you.</span>
+            AI Agent that researches,
+            <span className="block bg-[linear-gradient(110deg,#0A66C2_0%,#3B5BDB_45%,#1e293b_100%)] bg-clip-text text-transparent">writes, generate images, and posts for you.</span>
           </h1>
           <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
-            Draffly runs a full content pipeline: research, strategy, draft, visuals, approval, and publishing. You review, approve, and move on. Everything gets saved to your library automatically and published to your social media.
+            Draffly is an Agentic AI platform for your social media content creation. You only review, approve, and move on. Everything gets saved to your library and published to your social media.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a href="/plans" className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-800 to-slate-700 px-7 py-4 text-base font-semibold text-white shadow-xl transition hover:brightness-110">
@@ -172,8 +167,8 @@ function DashboardMockup() {
   const stages = [
     ["Research", "Complete", "w-full"],
     ["Strategy", "Complete", "w-full"],
-    ["Content", "Running", "w-[68%]"],
-    ["Visual Brief", "Queued", "w-[24%]"],
+    ["Write Content", "Running", "w-[68%]"],
+    ["Generate Image", "Queued", "w-[24%]"],
     ["Approval", "Waiting", "w-[12%]"],
     ["Publish", "Next", "w-[8%]"],
   ];
@@ -196,7 +191,7 @@ function DashboardMockup() {
           </aside>
           <div className="p-5 sm:p-7">
             <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-              <div><h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">One topic in. Published post out.</h3><p className="text-sm text-slate-500">Research - Strategy - Content - Visual Brief - Approval - Publish - Library</p></div>
+              <div><h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">Just give a topic. Let AI Agent cook</h3></div>
               <span className="rounded-xl bg-[#0A66C2] px-4 py-2 text-sm font-semibold text-white">Approve</span>
             </div>
             <div className="mb-5 grid gap-3 sm:grid-cols-3">
@@ -213,7 +208,7 @@ function DashboardMockup() {
                   </div>
                 ))}
               </div>
-              <div className="rounded-2xl bg-gradient-to-br from-[#0A66C2] to-[#3B5BDB] p-5 text-white shadow-xl"><p className="text-sm text-blue-100">Review queue</p><p className="mt-3 text-3xl font-bold">Approve or request edits</p><p className="mt-4 text-sm leading-6 text-blue-50">The post publishes when you say go, then saves the full run to your library.</p></div>
+              <div className="rounded-2xl bg-gradient-to-br from-[#0A66C2] to-[#3B5BDB] p-5 text-white shadow-xl"><p className="text-sm text-blue-100">Review queue</p><p className="mt-3 text-3xl font-bold">Approve or request edits</p><p className="mt-4 text-sm leading-6 text-blue-50">The post publishes when you say go, then saves the conetent to your library.</p></div>
             </div>
           </div>
         </div>
@@ -279,71 +274,106 @@ export function StatsSection() {
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="mx-auto max-w-7xl overflow-hidden px-8 py-[120px]">
-      <div className="mb-16 text-center"><span className="inline-block rounded-full bg-blue-100 px-[14px] py-1.5 text-[11px] font-semibold uppercase leading-[16.5px] text-[#3B5BDB]">FEATURES</span><h2 className="mx-auto mt-[18px] max-w-5xl font-[family-name:var(--font-poppins)] text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[63px] lg:leading-[64px]">Not a draft generator. A full content pipeline.</h2><p className="mx-auto mt-[14px] max-w-[700px] text-[19px] leading-[28.5px] text-slate-600">Research, strategy, content, visuals, approvals, publishing, library, calendar, analytics, billing, and BYOK in one workflow.</p></div>
-      <div className="grid gap-5 lg:grid-cols-3">
+    <section id="features" className="mx-auto max-w-7xl overflow-hidden px-6 py-20 lg:py-24">
+      <div className="mb-10 text-center"><span className="inline-block rounded-full bg-blue-100 px-3.5 py-1.5 text-[11px] font-semibold uppercase leading-[16.5px] text-[#3B5BDB]">FEATURES</span><h2 className="mx-auto mt-4 max-w-4xl font-[family-name:var(--font-poppins)] text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[56px] lg:leading-[58px]">Not a draft generator. A full content pipeline.</h2><p className="mx-auto mt-3 max-w-[660px] text-lg leading-7 text-slate-600">Research, strategy, Write, visuals, approvals, publishing, analytics in one workflow.</p></div>
+      <div className="grid gap-4 lg:grid-cols-3">
         <FeatureChat />
         <FeatureAgent />
         <FeatureCalendar />
       </div>
-      <div className="mt-5 grid gap-5 lg:grid-cols-3">
-        <FeatureCard title="Every post you've ever run, searchable." eyebrow="CONTENT LIBRARY" body="Every agent run saves the full output: title, platform, content, tags, approval status, word count, and all seven agent steps. Search, filter, star, copy, or delete anytime." />
-        <FeatureCard title="Track what's actually working." eyebrow="ANALYTICS & COMPETITORS" body="Impressions, clicks, engagement, shares, and platform mix for your published content. Add competitor profiles and compare their activity directly against yours." />
-        <FeatureCard title="Always know where you are on your plan." eyebrow="BILLING & USAGE" body="See your active plan, renewal date, remaining content runs, image allowance, connected accounts, and invoices, all in one place. Upgrade, downgrade, or cancel without contacting anyone." />
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+        <FeatureCard title="Every post you've ever generated, searchable." eyebrow="CONTENT LIBRARY" body="Agent saves the content with all agent steps. Search, filter, star, copy, or delete anytime." />
+        <FeatureCard title="Track what's actually working." eyebrow="ANALYTICS & COMPETITORS" body="Impressions, clicks, engagement, shares for every post, broken down by platform. No aggregated averages hiding the bad ones." />
+        <FeatureCard title="Spy on your competitors" eyebrow="COMPETITOR ANALYTICS" body="Add any profile and track their posting frequency, top content, and engagement numbers. Compare it directly against your own to spot the gaps." />
       </div>
-      <div className="mt-5 grid gap-5 lg:grid-cols-3">
-        <SmallFeature title="Approve from wherever you actually check messages." body="Route approvals to in-app, email, Telegram, Slack, or Discord. On Pro, add WhatsApp. Your pipeline does not stop because you missed a notification." />
-        <SmallFeature title="Use your own API key. Remove the caps." body="Connect your OpenRouter key in Settings and the content and image generation limits tied to your plan are lifted. You pay your provider directly for what you use." />
-        <SmallFeature title="See what's live, scheduled, and coming up." body="Monthly and timeline views for LinkedIn posts, Twitter threads, and blog articles. See what's going out and when, without opening a spreadsheet." />
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+        <SmallFeature title="Approve from any platform" body="Approve via in-app, email, Telegram, Slack, Discord or WhatsApp." />
+        <SmallFeature title="Use your own API key" body="Connect your API  and the content/image generation limits tied to your plan are lifted." />
+        <SmallFeature title="Content Calendar" body="Monthly and timeline views for LinkedIn posts, Twitter threads, and blog articles. See what's going out and when, without opening a spreadsheet." />
       </div>
     </section>
   );
 }
 
 function FeatureChat() {
-  return <div className="min-h-[470px] overflow-hidden rounded-[22px] bg-[linear-gradient(160deg,#0f172a_0%,#1e293b_60%,#0A66C2_180%)] p-7 text-white shadow-[0_30px_60px_-20px_rgba(15,23,42,.35)]"><p className="text-xs font-bold text-blue-200">AI CHAT</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold">A writing assistant that knows your workspace.</h3><p className="mt-3 text-sm leading-6 text-slate-300">Your AI chat runs on your own OpenRouter key. Switch models, keep your session history, and use it alongside the agent pipeline.</p><div className="mt-7 rounded-2xl bg-white/10 p-4"><p className="text-xs font-bold text-blue-200">DEFAULT</p><p className="mt-2 text-sm">Google Gemini 2.5 Flash. Swap to any OpenRouter-compatible model from Settings.</p></div><div className="mt-4 rounded-2xl bg-white p-4 text-slate-900"><p className="text-xs text-slate-500">BYOK</p><p className="mt-3 text-sm leading-6">Already paying for OpenRouter? Connect your key to use your preferred model and remove content and image caps.</p><p className="mt-3 text-sm font-semibold text-[#0A66C2]">Use your own API key. Remove the caps.</p></div></div>;
+  return (
+    <div className="min-h-[410px] overflow-hidden rounded-[22px] bg-[linear-gradient(160deg,#0f172a_0%,#1e293b_60%,#0A66C2_180%)] p-6 text-white shadow-[0_30px_60px_-20px_rgba(15,23,42,.35)]">
+      <p className="text-xs font-bold text-blue-200">AI CHAT</p>
+      <h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold">A writing assistant that knows your workspace.</h3>
+      <p className="mt-3 text-sm leading-6 text-slate-300">Ask for a post, angle, rewrite, or campaign idea. Draffly turns the conversation into publish-ready content.</p>
+      <div className="mt-5 space-y-3">
+        <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-white/12 p-3.5 ring-1 ring-white/10">
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-200">Prompt</p>
+          <p className="mt-2 text-sm leading-6 text-white">Write a post about Inbound calling Agent in Alex Hormozi style.</p>
+        </div>
+        <div className="rounded-2xl rounded-tl-md bg-white p-4 text-slate-900 shadow-xl">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[.16em] text-slate-400">You</p>
+              <p className="mt-1 font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">Your post</p>
+              <p className="mt-1 text-xs text-slate-500">LinkedIn - Just now</p>
+            </div>
+            <span className="rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-bold text-emerald-700">READY TO PUBLISH</span>
+          </div>
+          <p className="mt-4 text-sm leading-6 text-slate-700">Your sales team misses calls.<br/>Not sometimes. Every weekend. Every time they&#39;re on another call.<br/>That&#39;s a system problem.<br/>But an inbound calling agent picks up in under 2 seconds. Qualifies the lead...</p>
+          <div className="mt-4 flex gap-4 text-sm font-normal text-slate-500">
+            <span>👍 1.2k</span>
+            <span>💬 284</span>
+            <span>🔁 47</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function FeatureAgent() {
-  return <div className="min-h-[470px] overflow-hidden rounded-[22px] border border-slate-200 bg-white p-7 shadow-[0_30px_60px_-20px_rgba(15,23,42,.1)]"><p className="text-xs font-bold text-[#3B5BDB]">AI AGENT PIPELINE</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">Seven agents. One run. Full post.</h3><p className="mt-3 text-sm leading-6 text-slate-600">Configure your publish account, tone, format, approval channel, and optional competitor style. Hit run. The agent handles research through publishing.</p><div className="mt-7 space-y-3">{["Research", "Strategy", "Content", "Visual Brief", "Approval", "Publish", "Saved to Library"].map((item, index) => <div key={item} className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 p-4"><p className="font-semibold text-slate-900">{item}</p><span className={`rounded-full px-3 py-1 text-xs font-bold ${index < 4 ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-[#0A66C2]"}`}>{index < 4 ? "AGENT" : "FLOW"}</span></div>)}</div></div>;
+  return <div className="min-h-[410px] overflow-hidden rounded-[22px] border border-slate-200 bg-white p-6 shadow-[0_30px_60px_-20px_rgba(15,23,42,.1)]"><p className="text-xs font-bold text-[#3B5BDB]">AI AGENT PIPELINE</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">5 agents. 1 run. Full post.</h3><p className="mt-3 text-sm leading-6 text-slate-600">Configure your publish account, tone, format, approval channel, and optional competitor style. Hit run. The agent handles research through publishing.</p><div className="mt-5 space-y-2">{["Research", "Strategy", "Write Content", "Generate Image", "Approval", "Publish", "Saved to Library"].map((item, index) => <div key={item} className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3"><p className="font-semibold text-slate-900">{item}</p><span className={`rounded-full px-3 py-1 text-xs font-bold ${index < 4 ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-[#0A66C2]"}`}>{index < 4 ? "AGENT" : "FLOW"}</span></div>)}</div></div>;
 }
 
 function FeatureCalendar() {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  return <div className="min-h-[470px] overflow-hidden rounded-[22px] border border-slate-200 bg-[linear-gradient(160deg,#F3F6F8_0%,#fff_60%)] p-7 shadow-[0_30px_60px_-20px_rgba(15,23,42,.1)]"><p className="text-xs font-bold text-[#3B5BDB]">CONTENT CALENDAR</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">Calendar and timeline views.</h3><p className="mt-3 text-sm leading-6 text-slate-600">Track published, scheduled, and draft content across LinkedIn posts, Twitter threads, and blog articles.</p><div className="mt-7 grid grid-cols-7 gap-2 rounded-2xl bg-slate-50 p-3 text-center text-xs"><>{days.map((day) => <div key={day} className="font-bold text-slate-400">{day}</div>)}</>{[10, 11, 12, 13, 14, 15, 16].map((day) => <div key={day} className={`rounded-xl p-3 font-semibold ${day === 13 ? "bg-[#0A66C2] text-white" : "bg-white text-slate-600"}`}>{day}</div>)}</div><div className="mt-4 space-y-2"><div className="rounded-xl bg-blue-50 p-3 text-sm font-semibold text-[#0A66C2]">LinkedIn Post - Scheduled</div><div className="rounded-xl bg-slate-50 p-3 text-sm text-slate-600">Twitter Thread - Draft</div></div></div>;
+  return <div className="min-h-[410px] overflow-hidden rounded-[22px] border border-slate-200 bg-[linear-gradient(160deg,#F3F6F8_0%,#fff_60%)] p-6 shadow-[0_30px_60px_-20px_rgba(15,23,42,.1)]"><p className="text-xs font-bold text-[#3B5BDB]">CONTENT CALENDAR</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">Calendar and timeline views.</h3><p className="mt-3 text-sm leading-6 text-slate-600">Track published, scheduled, and draft content across LinkedIn posts, Twitter threads, and blog articles.</p><div className="mt-5 grid grid-cols-7 gap-2 rounded-2xl bg-slate-50 p-3 text-center text-xs"><>{days.map((day) => <div key={day} className="font-bold text-slate-400">{day}</div>)}</>{[10, 11, 12, 13, 14, 15, 16].map((day) => <div key={day} className={`rounded-xl px-2 py-3 font-semibold ${day === 13 ? "bg-[#0A66C2] text-white" : "bg-white text-slate-600"}`}>{day}</div>)}</div><div className="mt-3 space-y-2"><div className="rounded-xl bg-blue-50 p-3 text-sm font-semibold text-[#0A66C2]">LinkedIn Post - Scheduled</div><div className="rounded-xl bg-slate-50 p-3 text-sm text-slate-600">Twitter Thread - Draft</div></div></div>;
 }
 
 function FeatureCard({ title, body, eyebrow }: { title: string; body: string; eyebrow: string }) {
-  return <div className="min-h-[353px] rounded-[20px] border border-slate-200 bg-white p-7 shadow-[0_4px_12px_-6px_rgba(15,23,42,.08)]"><p className="text-xs font-bold text-[#3B5BDB]">{eyebrow}</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">{title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{body}</p><div className="mt-7 rounded-2xl bg-slate-50 p-4"><div className="mb-3 flex justify-between text-sm"><span>WORKSPACE</span><strong className="text-emerald-600">Synced</strong></div><div className="mb-3 flex justify-between text-sm"><span>PLAN</span><strong className="text-emerald-600">Active</strong></div><div className="flex justify-between text-sm"><span>STATUS</span><strong className="text-[#0A66C2]">Live</strong></div></div></div>;
+  return <div className="min-h-[300px] rounded-[20px] border border-slate-200 bg-white p-6 shadow-[0_4px_12px_-6px_rgba(15,23,42,.08)]"><p className="text-xs font-bold text-[#3B5BDB]">{eyebrow}</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">{title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{body}</p><div className="mt-5 rounded-2xl bg-slate-50 p-4"><div className="mb-2 flex justify-between text-sm"><span>WORKSPACE</span><strong className="text-emerald-600">Synced</strong></div><div className="mb-2 flex justify-between text-sm"><span>PLAN</span><strong className="text-emerald-600">Active</strong></div><div className="flex justify-between text-sm"><span>STATUS</span><strong className="text-[#0A66C2]">Live</strong></div></div></div>;
 }
 
 function SmallFeature({ title, body }: { title: string; body: string }) {
-  return <div className="min-h-[179px] rounded-[20px] border border-slate-200 bg-white p-6 shadow-[0_1px_3px_rgba(15,23,42,.06)]"><h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">{title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{body}</p></div>;
+  return <div className="min-h-[150px] rounded-[20px] border border-slate-200 bg-white p-5 shadow-[0_1px_3px_rgba(15,23,42,.06)]"><h3 className="font-[family-name:var(--font-poppins)] text-lg font-bold text-slate-900">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{body}</p></div>;
 }
 
 export function SecuritySection() {
-  return <section className="mx-auto max-w-7xl px-6 py-24"><div className="grid items-center gap-12 rounded-[24px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-8 lg:grid-cols-2 lg:p-12"><div><p className="text-xs font-bold tracking-[.2em] text-[#3B5BDB]">BYOK</p><h2 className="mt-4 font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Already paying for OpenRouter? Your content and image caps go away.</h2><p className="mt-5 text-lg leading-8 text-slate-600">Connect your OpenRouter key in Settings and the content and image generation limits tied to your plan are lifted. You pay your provider directly for what you use.</p><div className="mt-8 space-y-4">{["Use your preferred OpenRouter-compatible model", "Keep chat session history alongside agent runs", "Lift content and image caps on paid plans", "Default model: Google Gemini 2.5 Flash"].map((item) => <p key={item} className="flex gap-3 text-slate-700"><CheckIcon className="mt-1 h-5 w-5 shrink-0 text-emerald-600" />{item}</p>)}</div></div><div className="rounded-[22px] border border-slate-200 bg-white p-6 shadow-xl"><p className="text-xs font-bold tracking-[.16em] text-slate-400">WORKSPACE READINESS</p>{[["OpenRouter key", "Configured", "100%"], ["Publishing accounts", "LinkedIn and X", "66%"], ["Content caps", "Lifted with BYOK", "100%"]].map(([label, value, width]) => <div key={label} className="mt-5"><div className="mb-2 flex justify-between text-sm"><span className="text-slate-600">{label}</span><strong className="text-slate-900">{value}</strong></div><div className="h-2 rounded-full bg-slate-100"><div className={`h-2 rounded-full bg-gradient-to-r from-[#0A66C2] to-emerald-500 ${width === "66%" ? "w-[66%]" : "w-full"}`} /></div></div>)}<p className="mt-6 rounded-2xl bg-emerald-50 p-4 text-sm font-semibold text-emerald-700">Plug in your OpenRouter key. Skip the limits.</p></div></div></section>;
+  const freelancerCosts = [
+    ["Research and strategy", "$400", "Audience research, angles, positioning"],
+    ["Content writing", "$600", "Four polished social posts"],
+    ["Visual direction", "$250", "Creative brief or image generation"],
+    ["Publishing ops", "$200", "Scheduling, approvals, revisions"],
+  ];
+
+  return <section id='saving' className="mx-auto max-w-7xl px-6 py-24"><div className="grid items-center gap-12 rounded-[24px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-8 lg:grid-cols-2 lg:p-12"><div><p className="text-xs font-bold tracking-[.2em] text-[#3B5BDB]">COST COMPARISON</p><h2 className="mt-4 font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">How much will you save?</h2><p className="mt-5 text-lg leading-8 text-slate-600">A freelancer can help with writing, research, creative direction, and scheduling, but every step adds cost, coordination, and turnaround time. Draffly gives you the same end-to-end workflow on demand.</p><div className="mt-8 space-y-4">{["No separate researcher, strategist, writer, designer, or publishing tool", "No back-and-forth just to revise one post", "No lost drafts across docs, spreadsheets, and chat threads", "Every run saves the full pipeline history automatically", "Analyze platform wise content performance"].map((item) => <p key={item} className="flex gap-3 text-slate-700"><CheckIcon className="mt-1 h-5 w-5 shrink-0 text-emerald-600" />{item}</p>)}</div></div><div className="rounded-[22px] border border-slate-200 bg-white p-6 shadow-xl"><p className="text-xs font-bold tracking-[.16em] text-slate-400">TYPICAL MONTHLY OUTSOURCING COST</p><div className="mt-5 space-y-3">{freelancerCosts.map(([label, cost, detail]) => <div key={label} className="flex items-center justify-between gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4"><div><p className="font-semibold text-slate-900">{label}</p><p className="mt-1 text-xs text-slate-500">{detail}</p></div><strong className="text-lg text-slate-900">{cost}</strong></div>)}</div><div className="mt-5 rounded-2xl bg-slate-950 p-5 text-white"><div className="flex items-end justify-between gap-4"><div><p className="text-sm text-slate-300">Freelancer total</p><p className="mt-1 font-[family-name:var(--font-poppins)] text-4xl font-bold">$1,450/mo</p></div><div className="text-right"><p className="text-sm text-slate-300">Draffly Plus</p><p className="mt-1 font-[family-name:var(--font-poppins)] text-3xl font-bold text-emerald-300">$29.99/mo</p></div></div><p className="mt-4 rounded-xl bg-emerald-400/10 p-3 text-sm font-semibold text-emerald-200">Save about $1,420/month before you even count management time.</p></div></div></div></section>;
 }
 
 export function PlansSection() {
-  return <section id="plans" className="bg-white"><div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8"><div className="text-center"><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-slate-900 sm:text-5xl">Start free. Scale when you need to.</h2><p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">Every plan includes the full agent pipeline, content library, calendar, and approval routing. Higher plans add more accounts, runs, images, and approval channels.</p></div><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">{planTiers.map((plan) => <PlanCard key={plan.name} plan={plan} />)}</div><div className="mx-auto mt-12 max-w-3xl space-y-3 text-center text-sm text-slate-500"><p>All plans billed monthly or yearly. Yearly saves you two months. Cancel or change plans anytime from your dashboard.</p><p className="font-semibold text-[#0A66C2]">Already using OpenRouter? Connect your key in Settings and content and image caps are lifted on any paid plan.</p></div></div></section>;
+  return <section id="plans" className="bg-white"><div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8"><div className="text-center"><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-slate-900 sm:text-5xl">Start free. Scale when you need to.</h2><p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">No hidden fees. Cancel anytime.</p></div><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-5">{planTiers.map((plan) => <PlanCard key={plan.name} plan={plan} />)}</div><div className="mx-auto mt-12 max-w-3xl space-y-3 text-center text-sm text-slate-500"><p className="font-semibold text-[#0A66C2]">Have your own API Key? Connect your key and content/image caps are lifted on any paid plan.</p></div></div></section>;
 }
 
 function PlanCard({ plan }: { plan: PlanTier }) {
   const price = plan.monthlyPrice === 0 ? "$0" : `$${plan.monthlyPrice.toFixed(2)}`;
-  return <div className={`relative rounded-[24px] border p-6 shadow-sm ${plan.popular ? "border-slate-800 shadow-xl" : "border-slate-200"}`}>{plan.popular ? <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-4 py-1 text-xs font-bold text-white">Most popular</div> : null}<h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">{plan.name}</h3><p className="mt-2 text-sm font-semibold text-[#0A66C2]">{plan.tag}</p><p className="mt-3 min-h-12 text-sm leading-6 text-slate-600">{plan.description}</p><div className="mt-5"><span className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-slate-900">{price}</span><span className="text-sm text-slate-500"> / month</span></div>{plan.yearlyPrice > 0 ? <p className="mt-1 text-xs text-slate-500">${plan.yearlyPrice.toFixed(2)} / year billed annually</p> : <p className="mt-1 text-xs text-slate-500">Free forever tier</p>}<p className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm font-semibold text-slate-900">{plan.quota}</p><a href="/plans" className={`mt-6 block w-full rounded-xl py-3 text-center text-sm font-semibold transition ${plan.popular ? "bg-gradient-to-r from-slate-800 to-slate-700 text-white shadow-lg hover:brightness-110" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>View plans</a><div className="mt-5 space-y-3">{plan.features.map((feature) => <p key={feature} className="flex gap-3 text-sm text-slate-600"><CheckIcon className="h-5 w-5 shrink-0 text-emerald-600" />{feature}</p>)}{plan.unavailable?.map((feature) => <p key={feature} className="flex gap-3 text-sm text-slate-400"><span className="h-5 w-5 shrink-0 text-center text-sm leading-5">x</span>{feature}</p>)}</div></div>;
+  return <div className={`relative rounded-[24px] border p-6 shadow-sm ${plan.popular ? "border-slate-800 shadow-xl" : "border-slate-200"}`}>{plan.popular ? <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-4 py-1 text-xs font-bold text-white">Most popular</div> : null}<h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">{plan.name}</h3><p className="mt-2 text-sm font-semibold text-[#0A66C2]">{plan.tag}</p><div className="mt-5"><span className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-slate-900">{price}</span><span className="text-sm text-slate-500"> / month</span></div>{plan.yearlyPrice > 0 ? <p className="mt-1 text-xs text-slate-500">${plan.yearlyPrice.toFixed(2)} / year billed annually</p> : <p className="mt-1 text-xs text-slate-500">Free forever tier</p>}<p className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm font-semibold text-slate-900">{plan.quota}</p><a href="/plans" className={`mt-6 block w-full rounded-xl py-3 text-center text-sm font-semibold transition ${plan.popular ? "bg-gradient-to-r from-slate-800 to-slate-700 text-white shadow-lg hover:brightness-110" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>Start 7-day Free trial</a><div className="mt-5 space-y-3">{plan.features.map((feature) => <p key={feature} className="flex gap-3 text-sm text-slate-600"><CheckIcon className="h-5 w-5 shrink-0 text-emerald-600" />{feature}</p>)}{plan.unavailable?.map((feature) => <p key={feature} className="flex gap-3 text-sm text-slate-400"><span className="h-5 w-5 shrink-0 text-center text-sm leading-5">x</span>{feature}</p>)}</div></div>;
 }
 
 export function FaqSection() {
   const questions = [
-    ["Do I need to bring my own AI API key?", "No. You can start without one. If you have an OpenRouter key, you can connect it in Settings to use your preferred model and remove content and image caps."],
-    ["Which social platforms can I publish to?", "LinkedIn, Twitter/X, and Facebook right now. Instagram is coming. You can connect multiple accounts and choose which one each agent run publishes to."],
-    ["How does the approval workflow work?", "After the agent finishes your draft, it routes to whatever approval channel you've configured: in-app, email, Telegram, Slack, or Discord. You review, approve or request edits, and the post publishes when you say go."],
+    ["Do I need to bring my own AI API key?", "No. You can start without one. If you have an API key, you can connect it to use your preferred model and remove content and image caps."],
+    ["Which social platforms can I publish to?", "LinkedIn (personal + pages), Twitter/X, and Facebook right now. Instagram is coming. You can connect multiple accounts."],
+    ["How does the approval workflow work?", "After the agent finishes your draft, it routes to whatever approval channel you've configured (email, Slack, etc.) You review, approve or request edits, and the Agent publishes the post when you say go."],
     ["What happens to my content runs after I use them?", "Runs reset monthly. Every completed run is saved to your library with the full pipeline history, so nothing gets lost."],
     ["Can I change plans or cancel?", "Yes. Everything is self-serve from your billing dashboard. Upgrade, downgrade, or cancel without contacting support."],
-    ["What's the difference between Plus and Pro?", "Plus is designed for growing brands: 3 workspaces, 5 social accounts, 20 runs, analytics, and competitor tracking. Pro is for high-volume teams: 10 workspaces, 15 accounts, 28 runs, and every approval channel available."],
   ];
-  return <section id="faq" className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="mb-16 text-center"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">A few things people ask before signing up.</h2></div><div className="mx-auto max-w-3xl"><div className="space-y-4">{questions.map(([question, answer]) => <div key={question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">{question}</h3><p className="mt-4 text-[15px] leading-7 text-slate-600">{answer}</p></div>)}</div><div className="mt-12 text-center"><p className="mb-3 text-slate-600">Ready to build the next content run?</p><a href="/plans" className="inline-flex items-center gap-2 font-semibold text-slate-800 transition-colors hover:text-[#0A66C2]">Start for Free<ArrowRightIcon className="h-4 w-4" /></a></div></div></section>;
+  return <section id="faq" className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="mb-16 text-center"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">Frequently Asked Questions
+</h2></div><div className="mx-auto max-w-3xl"><div className="space-y-4">{questions.map(([question, answer]) => <div key={question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">{question}</h3><p className="mt-4 text-[15px] leading-7 text-slate-600">{answer}</p></div>)}</div><div className="mt-12 text-center"><p className="mb-3 text-slate-600">Still have questions?</p><a href="/plans" className="inline-flex items-center gap-2 font-semibold text-slate-800 transition-colors hover:text-[#0A66C2]">Our Support team is here to help<ArrowRightIcon className="h-4 w-4" /></a></div></div></section>;
 }
 
 export function UseCasesSection() {
@@ -351,12 +381,12 @@ export function UseCasesSection() {
 }
 
 export function CtaSection() {
-  return <section className="px-6 py-24"><div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] bg-[#0a0f1c] px-8 py-20 text-center shadow-[0_30px_60px_-20px_rgba(15,23,42,.45)] lg:px-12"><div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(10,102,194,.35),transparent_28%),radial-gradient(circle_at_82%_22%,rgba(59,91,219,.25),transparent_25%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,.08),transparent_35%)]" /><svg aria-hidden="true" viewBox="0 0 1100 500" className="absolute inset-0 h-full w-full opacity-35"><path d="M80 400 C240 160 420 470 610 210 S880 130 1040 330" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 14" /><path d="M130 120 C360 260 650 50 980 160" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="5 18" /></svg><div className="relative"><p className="text-xs font-bold tracking-[.25em] text-blue-200">YOUR FIRST RUN IS FREE</p><h2 className="mx-auto mt-5 max-w-3xl font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-white sm:text-6xl">Ready to stop doing this manually?</h2><p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-300">Set up takes five minutes. Connect your account, configure your settings, and run the agent on any topic.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="/plans" className="rounded-2xl bg-white px-7 py-4 font-semibold text-slate-900 shadow-xl transition hover:bg-blue-50">Start for Free</a><a href="/plans" className="rounded-2xl border border-white/20 px-7 py-4 font-semibold text-white transition hover:bg-white/10">View Plans</a></div><p className="mt-7 text-sm text-slate-400">No card required on the free plan. Cancel anytime on paid plans.</p></div></div></section>;
+  return <section className="px-6 py-24"><div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] bg-[#0a0f1c] px-8 py-20 text-center shadow-[0_30px_60px_-20px_rgba(15,23,42,.45)] lg:px-12"><div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(10,102,194,.35),transparent_28%),radial-gradient(circle_at_82%_22%,rgba(59,91,219,.25),transparent_25%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,.08),transparent_35%)]" /><svg aria-hidden="true" viewBox="0 0 1100 500" className="absolute inset-0 h-full w-full opacity-35"><path d="M80 400 C240 160 420 470 610 210 S880 130 1040 330" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 14" /><path d="M130 120 C360 260 650 50 980 160" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="5 18" /></svg><div className="relative"><p className="text-xs font-bold tracking-[.25em] text-blue-200">YOUR FIRST RUN IS FREE</p><h2 className="mx-auto mt-5 max-w-3xl font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-white sm:text-6xl">Ready to stop doing this manually?</h2><p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-300">Connect your account, pick one topic, and let the Agent cook for you.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="/plans" className="rounded-2xl bg-white px-7 py-4 font-semibold text-slate-900 shadow-xl transition hover:bg-blue-50">Start for Free</a><a href="https://calendly.com/souvikp/draffly-demo" className="rounded-2xl border border-white/20 px-7 py-4 font-semibold text-white transition hover:bg-white/10">Book a demo with Founder</a></div><p className="mt-7 text-sm text-slate-400">No card required. Cancel anytime on paid plans. Trusted by 100+ creators</p></div></div></section>;
 }
 
 export function FooterSection() {
   const nav = ["AI Agent", "Library", "Calendar", "Analytics", "Competitors", "Billing", "Plans", "Settings"];
-  return <footer className="mt-20 border-t border-slate-200 bg-white"><div className="mx-auto max-w-7xl px-6 py-16 pb-8 lg:px-8"><div className="mb-14 max-w-3xl"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-slate-900">Stop patching together tools for something that should work end-to-end.</h2><p className="mt-4 text-lg leading-8 text-slate-600">Draffly handles the research, writing, approvals, and publishing in one place.</p><a href="/plans" className="mt-6 inline-block rounded-2xl bg-slate-900 px-7 py-4 font-semibold text-white transition hover:bg-slate-800">Start for Free</a></div><div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-16"><div><div className="mb-5 flex items-center gap-2 font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900"><LogoIcon className="h-9 w-9" />Draffly</div><p className="max-w-xs text-sm leading-6 text-slate-500">From one topic to a published post. No manual steps.</p><p className="mt-6 text-sm text-slate-500">(c) 2026 Draffly.<br />All rights reserved.</p></div><FooterColumn title="PRODUCT" items={nav} /><FooterColumn title="WORKFLOWS" items={["AI Chat", "Agent Pipeline", "Content Ops", "Social Publishing"]} /><FooterColumn title="LEGAL" items={["Terms", "Privacy"]} /></div></div><div className="-mt-4 h-[45px] overflow-hidden sm:h-[88px] lg:h-[140px]"><h2 className="select-none bg-gradient-to-b from-slate-200 to-white bg-clip-text text-center font-[family-name:var(--font-poppins)] text-[56px] font-semibold leading-none tracking-wide text-transparent sm:text-[110px] lg:text-[176px]">Draffly</h2></div></footer>;
+  return <footer className="mt-20 border-t border-slate-200 bg-white"><div className="mx-auto max-w-7xl px-6 py-16 pb-8 lg:px-8"><div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-16"><div><div className="mb-5 flex items-center gap-2 font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900"><LogoIcon className="h-9 w-9" />Draffly</div><p className="max-w-xs text-sm leading-6 text-slate-500">Agentic AI for Social Media Content Creation</p><p className="mt-6 text-sm text-slate-500">(c) 2026 Draffly.<br />All rights reserved.</p></div><FooterColumn title="PRODUCT" items={nav} /><FooterColumn title="WORKFLOWS" items={["AI Chat", "Agent Pipeline", "Content Ops", "Social Publishing"]} /><FooterColumn title="LEGAL" items={["Terms", "Privacy"]} /></div></div><div className="-mt-4 h-[45px] overflow-hidden sm:h-[88px] lg:h-[140px]"><h2 className="select-none bg-gradient-to-b from-slate-200 to-white bg-clip-text text-center font-[family-name:var(--font-poppins)] text-[56px] font-semibold leading-none tracking-wide text-transparent sm:text-[110px] lg:text-[176px]">Draffly</h2></div></footer>;
 }
 
 function FooterColumn({ title, items }: { title: string; items: string[] }) {
