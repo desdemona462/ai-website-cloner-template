@@ -6,12 +6,12 @@ import {
   HeroSection,
   HowItWorksSection,
   Navigation,
-  PricingSection,
+  PlansSection,
   SecuritySection,
   StatsSection,
-  TestimonialsSection,
+  UseCasesSection,
   TrustedBySection,
-} from "@/components/leadgravity-sections";
+} from "@/components/draffly-sections";
 
 export default function Home() {
   return (
@@ -25,9 +25,9 @@ export default function Home() {
           <StatsSection />
           <FeaturesSection />
           <SecuritySection />
-          <PricingSection />
+          <PlansSection />
           <FaqSection />
-          <TestimonialsSection />
+          <UseCasesSection />
           <CtaSection />
         </div>
       </main>

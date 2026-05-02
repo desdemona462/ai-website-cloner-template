@@ -4,9 +4,9 @@ export function LogoIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 100 100" aria-hidden="true" {...props}>
       <rect width="100" height="100" rx="28" fill="#1e293b" />
-      <ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="white" strokeWidth="7" transform="rotate(45 50 50)" />
-      <ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="white" strokeWidth="7" transform="rotate(-45 50 50)" />
-      <circle cx="50" cy="50" r="9" fill="white" />
+      <path d="M31 24h19c16 0 27 10 27 26S66 76 50 76H31V24Z" fill="none" stroke="white" strokeWidth="8" strokeLinejoin="round" />
+      <path d="M47 39h3c7 0 11 4 11 11s-4 11-11 11h-3V39Z" fill="#3B5BDB" />
+      <path d="M23 50h26" stroke="white" strokeWidth="8" strokeLinecap="round" />
     </svg>
   );
 }

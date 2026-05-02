@@ -31,22 +31,20 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://leadgravity.ai"),
-  title: "LinkedIn Lead Generation Automation | LeadGravity - 10x Your Outreach",
+  metadataBase: new URL("https://draffly.ai"),
+  title: "Draffly | Agentic AI Social Content Operations",
   description:
-    "Automate LinkedIn DMs & comments. Grow your network 24/7 with personalized outreach. Free 7-day trial. Join 300+ B2B sales teams.",
+    "Chat with AI, run autonomous content pipelines, manage a library and calendar, track billing usage, and publish through connected social accounts.",
   openGraph: {
-    title: "LinkedIn Lead Generation Automation | LeadGravity - 10x Your Outreach",
+    title: "Draffly | Agentic AI Social Content Operations",
     description:
-      "Automate LinkedIn DMs & comments. Grow your network 24/7 with personalized outreach. Free 7-day trial. Join 300+ B2B sales teams.",
-    images: ["/seo/leadgravity/opengraph-image.png"],
+      "Chat with AI, run autonomous content pipelines, manage a library and calendar, track billing usage, and publish through connected social accounts.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LinkedIn Lead Generation Automation | LeadGravity - 10x Your Outreach",
+    title: "Draffly | Agentic AI Social Content Operations",
     description:
-      "Automate LinkedIn DMs & comments. Grow your network 24/7 with personalized outreach. Free 7-day trial. Join 300+ B2B sales teams.",
-    images: ["/seo/leadgravity/opengraph-image.png"],
+      "Chat with AI, run autonomous content pipelines, manage a library and calendar, track billing usage, and publish through connected social accounts.",
   },
 };
 
