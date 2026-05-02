@@ -20,7 +20,6 @@ export default function Home() {
       <main id="skip" className="min-h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-5rem)]">
         <div className="min-h-screen">
           <HeroSection />
-          <TrustedBySection />
           <HowItWorksSection />
           <StatsSection />
           <FeaturesSection />

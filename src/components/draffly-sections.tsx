@@ -140,7 +140,7 @@ export function HeroSection() {
         <div className="mx-auto mb-[60px] max-w-[1040px] text-center">
           <div className="mx-auto mb-7 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-sm font-semibold text-[#0A66C2] shadow-sm">
             <span className="h-2 w-2 rounded-full bg-emerald-500" />
-            From one topic to a published post. No manual steps.
+            You give it a topic. It handles the rest.
           </div>
           <h1 className="font-[family-name:var(--font-poppins)] text-5xl font-bold leading-[.95] tracking-[-0.04em] text-slate-900 sm:text-6xl lg:text-[80px]">
             The AI that researches,
@@ -176,7 +176,6 @@ function DashboardMockup() {
     ["Visual Brief", "Queued", "w-[24%]"],
     ["Approval", "Waiting", "w-[12%]"],
     ["Publish", "Next", "w-[8%]"],
-    ["Library", "Next", "w-[8%]"],
   ];
 
   return (
@@ -186,7 +185,7 @@ function DashboardMockup() {
           <span className="h-3 w-3 rounded-full bg-red-400" />
           <span className="h-3 w-3 rounded-full bg-amber-400" />
           <span className="h-3 w-3 rounded-full bg-emerald-400" />
-          <span className="ml-3 rounded-full bg-white px-3 py-1 shadow-sm">draffly.app / ai-agent</span>
+          <span className="ml-3 rounded-full bg-white px-3 py-1 shadow-sm">draffly.com / ai-agent</span>
         </div>
         <div className="grid lg:grid-cols-[220px_1fr]">
           <aside className="hidden border-r border-slate-100 bg-slate-950 p-5 text-white lg:block">
@@ -201,7 +200,7 @@ function DashboardMockup() {
               <span className="rounded-xl bg-[#0A66C2] px-4 py-2 text-sm font-semibold text-white">Approve</span>
             </div>
             <div className="mb-5 grid gap-3 sm:grid-cols-3">
-              {[["PIPELINE", "7 steps", "Fully automated"], ["PUBLISHING", "3 channels", "LinkedIn, X, Facebook"], ["BYOK", "No caps", "Use your OpenRouter key"]].map(([label, value, helper]) => (
+              {[["PIPELINE", "5 steps", "Fully automated"], ["PUBLISHING", "3+ channels", "LinkedIn, X, Facebook, Instagram"], ["BYOK", "No caps", "Use your AI API key"]].map(([label, value, helper]) => (
                 <div key={label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"><p className="text-[11px] font-bold tracking-wide text-slate-400">{label}</p><div className="mt-2"><strong className="text-2xl text-slate-900">{value}</strong><p className="mt-1 text-xs font-semibold text-slate-500">{helper}</p></div></div>
               ))}
             </div>
@@ -220,9 +219,9 @@ function DashboardMockup() {
         </div>
       </div>
       <div className="mt-5 grid gap-4 md:grid-cols-3">
-        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-[#0A66C2]">BYOK</p><p className="mt-3 text-sm text-slate-700">Connect your OpenRouter key in Settings and content and image caps are lifted on paid plans.</p></div>
-        <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-[#0A66C2]">LIBRARY</p><p className="mt-3 text-sm text-slate-700">Every run saves title, platform, content, tags, status, word count, and pipeline history.</p></div>
-        <div className="rounded-2xl border border-emerald-100 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-emerald-600">APPROVALS</p><p className="mt-3 text-sm text-slate-700">Route approvals to in-app, email, Telegram, Slack, or Discord depending on your plan.</p></div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-[#0A66C2]">BYOK (Bring Your Own Key)</p><p className="mt-3 text-sm text-slate-700">Connect your API keys (OpenAI, Anthropic, etc) to unlock unlimited generation.</p></div>
+        <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-[#0A66C2]">LIBRARY</p><p className="mt-3 text-sm text-slate-700">Every content generated is saved to your library with pipeline history.</p></div>
+        <div className="rounded-2xl border border-emerald-100 bg-white p-4 shadow-xl"><p className="text-xs font-bold text-emerald-600">APPROVALS</p><p className="mt-3 text-sm text-slate-700">Approve/Reject generated content via email, Telegram, Slack, or Discord.</p></div>
       </div>
     </div>
   );
@@ -245,17 +244,17 @@ export function TrustedBySection() {
 
 export function HowItWorksSection() {
   const steps = [
-    ["01", "CONFIGURE", "Tell Draffly how you work.", "Connect your OpenRouter key, choose your default model, link your LinkedIn or Twitter account, and set your tone and format preferences. Do it once. Every run after uses these settings automatically."],
-    ["02", "RUN THE AGENT", "Pick a topic. The agent does the rest.", "Give it a topic or prompt. The pipeline kicks off: research, strategy, content draft, visual brief, then routes to your approval channel. You approve or request edits. It publishes when you say go."],
-    ["03", "OPERATE", "Everything tracked. Nothing lost.", "Every run saves to your library. Your calendar shows what's live, scheduled, and in draft. Analytics shows what's working. Billing shows exactly where you are on your plan."],
+    ["01", "CONFIGURE", "Tell Draffly how you work.", "Link your LinkedIn or Twitter account, and set your tone and format preferences. Do it once. Every run after uses these settings automatically."],
+    ["02", "RUN THE AGENT", "Pick a topic and let the agent cook.", "Give it a topic or let the Agent find a trending topic. The Agent researches, drafts, generates images, asks your approval or request changes. Once you approve, it publishes."],
+    ["03", "OPERATE", "Everything tracked. Nothing lost.", "Every content is automatically saved to your library. You can check the analytics of published content in your dashboard."],
   ];
 
   return (
     <section id="how-it-works" className="bg-gradient-to-b from-[#F3F6F8] to-white px-6 pb-20 pt-24">
       <div className="mx-auto max-w-[1100px]">
-        <div className="mb-16 text-center"><p className="mb-3 text-[11px] font-bold tracking-[.22em] text-[#3B5BDB]">HOW IT WORKS</p><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Set it up once. Run it on repeat.</h2><p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">No juggling tools. No copy-pasting between apps. Just a topic in, and a post out the other side.</p></div>
+        <div className="mb-16 text-center"><p className="mb-3 text-[11px] font-bold tracking-[.22em] text-[#3B5BDB]">HOW IT WORKS</p><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Set it up once. Run it on repeat.</h2><p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">No juggling tools. No copy-pasting between apps.</p></div>
         <div className="relative grid gap-6 lg:grid-cols-3">
-          <p className="absolute -top-11 left-3 hidden rotate-[-7deg] font-[family-name:var(--font-caveat)] text-2xl font-semibold text-[#0A66C2] lg:block">Start in settings</p>
+          <p className="absolute -top-11 left-3 hidden rotate-[-7deg] font-[family-name:var(--font-caveat)] text-2xl font-semibold text-[#0A66C2] lg:block">Set it once</p>
           {steps.map(([number, label, title, body]) => (
             <div key={number} className="rounded-[22px] border border-slate-200 bg-white p-7 shadow-[0_16px_40px_-28px_rgba(15,23,42,.35)]">
               <span className="text-5xl font-black text-slate-100">{number}</span><p className="mt-2 text-xs font-bold tracking-[.18em] text-[#0A66C2]">{label}</p><h3 className="mt-3 font-[family-name:var(--font-poppins)] text-2xl font-bold text-slate-900">{title}</h3><p className="mt-4 text-[15px] leading-7 text-slate-600">{body}</p>
@@ -272,7 +271,7 @@ export function StatsSection() {
     <section className="relative overflow-hidden bg-slate-900 px-6 py-16 text-white">
       <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(10,102,194,.18),transparent_40%),radial-gradient(circle_at_80%_50%,rgba(59,91,219,.15),transparent_40%)]" />
       <div className="relative mx-auto grid max-w-[1100px] gap-6 text-center sm:grid-cols-2 lg:grid-cols-4">
-        {[["7 steps", "Research to saved library item"], ["5 channels", "In-app, email, Telegram, Slack, Discord"], ["3 platforms", "LinkedIn, Twitter/X, Facebook"], ["BYOK", "Use your OpenRouter key and skip caps"]].map(([value, label]) => <div key={label}><p className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-white">{value}</p><p className="mt-2 text-sm text-slate-400">{label}</p></div>)}
+        {[["+500", "Content generated"], ["+5M", "Impressions on the published content"], ["+100", "People trust us"], ["BYOK", "Bring your API key for unlimited usage"]].map(([value, label]) => <div key={label}><p className="font-[family-name:var(--font-poppins)] text-4xl font-bold text-white">{value}</p><p className="mt-2 text-sm text-slate-400">{label}</p></div>)}
       </div>
     </section>
   );

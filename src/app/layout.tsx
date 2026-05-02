@@ -31,8 +31,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://draffly.ai"),
-  title: "Draffly | Your Content Team, Minus the Team",
+  metadataBase: new URL("https://draffly.com"),
+  title: "Draffly | Agentic AI for Social Media Content Creation",
   description:
     "Draffly researches, writes, routes approvals, publishes to social media, and saves every run to your content library automatically.",
   openGraph: {
