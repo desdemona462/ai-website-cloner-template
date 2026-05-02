@@ -1,9 +1,37 @@
+import {
+  CtaSection,
+  FaqSection,
+  FeaturesSection,
+  FooterSection,
+  HeroSection,
+  HowItWorksSection,
+  Navigation,
+  PricingSection,
+  SecuritySection,
+  StatsSection,
+  TestimonialsSection,
+  TrustedBySection,
+} from "@/components/leadgravity-sections";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <p className="text-muted-foreground">
-        Clone target not yet built. Run <code className="font-mono text-foreground">/clone-website</code> to start.
-      </p>
-    </main>
+    <>
+      <Navigation />
+      <main id="skip" className="min-h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-5rem)]">
+        <div className="min-h-screen">
+          <HeroSection />
+          <TrustedBySection />
+          <HowItWorksSection />
+          <StatsSection />
+          <FeaturesSection />
+          <SecuritySection />
+          <PricingSection />
+          <FaqSection />
+          <TestimonialsSection />
+          <CtaSection />
+        </div>
+      </main>
+      <FooterSection />
+    </>
   );
 }

@@ -1,20 +1,53 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Caveat, Darker_Grotesque, DM_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const darkerGrotesque = Darker_Grotesque({
+  variable: "--font-darker-grotesque",
   subsets: ["latin"],
+  weight: ["800"],
+  display: "swap",
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Website Clone",
-  description: "Pixel-perfect website clone",
+  metadataBase: new URL("https://leadgravity.ai"),
+  title: "LinkedIn Lead Generation Automation | LeadGravity - 10x Your Outreach",
+  description:
+    "Automate LinkedIn DMs & comments. Grow your network 24/7 with personalized outreach. Free 7-day trial. Join 300+ B2B sales teams.",
+  openGraph: {
+    title: "LinkedIn Lead Generation Automation | LeadGravity - 10x Your Outreach",
+    description:
+      "Automate LinkedIn DMs & comments. Grow your network 24/7 with personalized outreach. Free 7-day trial. Join 300+ B2B sales teams.",
+    images: ["/seo/leadgravity/opengraph-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LinkedIn Lead Generation Automation | LeadGravity - 10x Your Outreach",
+    description:
+      "Automate LinkedIn DMs & comments. Grow your network 24/7 with personalized outreach. Free 7-day trial. Join 300+ B2B sales teams.",
+    images: ["/seo/leadgravity/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -25,9 +58,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${poppins.variable} ${darkerGrotesque.variable} ${caveat.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#F3F6F8]">{children}</body>
     </html>
   );
 }
