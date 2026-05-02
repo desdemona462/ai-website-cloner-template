@@ -34,17 +34,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://draffly.ai"),
   title: "Draffly | Agentic AI Social Content Operations",
   description:
-    "Chat with AI, run autonomous content pipelines, manage a library and calendar, track billing usage, and publish through connected social accounts.",
+    "Configure OpenRouter, run AI content agents, save library history, schedule posts, connect social accounts, track billing usage, and monitor analytics.",
   openGraph: {
     title: "Draffly | Agentic AI Social Content Operations",
     description:
-      "Chat with AI, run autonomous content pipelines, manage a library and calendar, track billing usage, and publish through connected social accounts.",
+      "Configure OpenRouter, run AI content agents, save library history, schedule posts, connect social accounts, track billing usage, and monitor analytics.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Draffly | Agentic AI Social Content Operations",
     description:
-      "Chat with AI, run autonomous content pipelines, manage a library and calendar, track billing usage, and publish through connected social accounts.",
+      "Configure OpenRouter, run AI content agents, save library history, schedule posts, connect social accounts, track billing usage, and monitor analytics.",
   },
 };
 
@@ -58,7 +58,7 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} ${darkerGrotesque.variable} ${caveat.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F3F6F8]">{children}</body>
+      <body suppressHydrationWarning className="min-h-full flex flex-col bg-[#F3F6F8]">{children}</body>
     </html>
   );
 }
