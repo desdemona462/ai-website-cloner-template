@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRightIcon, CheckIcon, LogoIcon, MenuIcon, PlayIcon, StarIcon } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import type { PlanTier, UseCase } from "@/types/draffly";
 
 const proofPills = [
@@ -11,6 +12,8 @@ const proofPills = [
   "LinkedIn, Twitter/X, and Facebook publishing",
   "BYOK unlocks unlimited content runs",
 ];
+
+const heroTypingActions = ["researches", "writes", "generates images", "and posts."];
 
 const planTiers: PlanTier[] = [
   {
@@ -126,7 +129,7 @@ export function Navigation() {
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden px-6 pb-[120px] pt-[72px]">
+    <section className="relative overflow-hidden px-6 pb-[100px] pt-[25px]">
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-0 h-[80%] w-[140%] -translate-x-1/2 bg-[radial-gradient(40%_35%_at_25%_30%,rgba(10,102,194,.2),transparent_60%),radial-gradient(35%_30%_at_75%_20%,rgba(59,91,219,.16),transparent_60%),radial-gradient(50%_40%_at_50%_70%,rgba(167,139,250,.1),transparent_60%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,.05)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(circle_at_center,black,transparent_75%)]" />
@@ -137,17 +140,21 @@ export function HeroSection() {
             <span className="h-2 w-2 rounded-full bg-emerald-500" />
             You give it a topic. It handles the rest.
           </div>
-          <h1 className="font-[family-name:var(--font-poppins)] text-5xl font-bold leading-[.95] tracking-[-0.04em] text-slate-900 sm:text-6xl lg:text-[80px]">
-            AI Agent that researches,
-            <span className="block bg-[linear-gradient(110deg,#0A66C2_0%,#3B5BDB_45%,#1e293b_100%)] bg-clip-text text-transparent">writes, generate images, and posts for you.</span>
+          <h1 aria-label="AI Agent that researches, writes, generates images, and posts for you." className="font-[family-name:var(--font-poppins)] text-[clamp(2.25rem,9.8vw,3.75rem)] font-bold leading-[1.12] tracking-[-0.04em] text-slate-900 sm:text-6xl sm:leading-[1.1] lg:text-[80px] lg:leading-[1.25]">
+            <span className="block">AI Agent that</span>
+            <span aria-hidden="true" className="block">
+              <span className="inline-flex max-w-full flex-wrap items-baseline justify-center gap-x-2 gap-y-1 sm:gap-y-2">
+                <HeroTypingText />
+              </span>
+            </span>
           </h1>
           <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
             Draffly is an Agentic AI platform for your social media content creation. You only review, approve, and move on. Everything gets saved to your library and published to your social media.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="/plans" className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-800 to-slate-700 px-7 py-4 text-base font-semibold text-white shadow-xl transition hover:brightness-110">
+            <Button render={<Link href="/plans" />} nativeButton={false} className="h-auto rounded-2xl from-slate-800 via-slate-700 to-slate-800 bg-transparent bg-gradient-to-r px-7 py-4 text-base font-semibold text-white shadow-xl [background-size:200%_auto] hover:bg-transparent hover:bg-[99%_center]">
               Start for Free
-            </a>
+            </Button>
             <a href="#how-it-works" className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-7 py-4 text-base font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:shadow-md">
               <PlayIcon className="h-4 w-4" /> See how it works
             </a>
@@ -160,6 +167,59 @@ export function HeroSection() {
         <DashboardMockup />
       </div>
     </section>
+  );
+}
+
+function HeroTypingText() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [characterCount, setCharacterCount] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setReducedMotion(motionQuery.matches);
+
+    updateMotionPreference();
+    motionQuery.addEventListener("change", updateMotionPreference);
+    return () => motionQuery.removeEventListener("change", updateMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      return undefined;
+    }
+
+    const currentWord = heroTypingActions[wordIndex];
+    const wordComplete = characterCount === currentWord.length;
+    const wordCleared = characterCount === 0;
+    const delay = deleting ? 45 : wordComplete ? 1300 : 75;
+
+    const timeout = window.setTimeout(() => {
+      if (!deleting && wordComplete) {
+        setDeleting(true);
+        return;
+      }
+
+      if (deleting && wordCleared) {
+        setDeleting(false);
+        setWordIndex((currentIndex) => (currentIndex + 1) % heroTypingActions.length);
+        return;
+      }
+
+      setCharacterCount((count) => count + (deleting ? -1 : 1));
+    }, delay);
+
+    return () => window.clearTimeout(timeout);
+  }, [characterCount, deleting, reducedMotion, wordIndex]);
+
+  const typedText = reducedMotion ? heroTypingActions[0] : heroTypingActions[wordIndex].slice(0, characterCount);
+
+  return (
+    <span className="inline-flex items-baseline bg-[linear-gradient(110deg,#0A66C2_0%,#3B5BDB_45%,#1e293b_100%)] bg-clip-text text-transparent">
+      <span>{typedText || "\u00a0"}</span>
+      <span aria-hidden="true" className="ml-1 inline-block h-[.82em] w-[3px] translate-y-[.08em] rounded-full bg-[#0A66C2] animate-pulse motion-reduce:hidden" />
+    </span>
   );
 }
 
@@ -245,7 +305,7 @@ export function HowItWorksSection() {
   ];
 
   return (
-    <section id="how-it-works" className="bg-gradient-to-b from-[#F3F6F8] to-white px-6 pb-20 pt-24">
+    <section id="how-it-works" className="bg-gradient-to-b from-[#F3F6F8] to-white px-6 pb-20 pt-10">
       <div className="mx-auto max-w-[1100px]">
         <div className="mb-16 text-center"><p className="mb-3 text-[11px] font-bold tracking-[.22em] text-[#3B5BDB]">HOW IT WORKS</p><h2 className="font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Set it up once. Run it on repeat.</h2><p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">No juggling tools. No copy-pasting between apps.</p></div>
         <div className="relative grid gap-6 lg:grid-cols-3">
@@ -303,14 +363,14 @@ function FeatureChat() {
       <p className="mt-3 text-sm leading-6 text-slate-300">Ask for a post, angle, rewrite, or campaign idea. Draffly turns the conversation into publish-ready content.</p>
       <div className="mt-5 space-y-3">
         <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-white/12 p-3.5 ring-1 ring-white/10">
-          <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-200">Prompt</p>
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-200">You</p>
           <p className="mt-2 text-sm leading-6 text-white">Write a post about Inbound calling Agent in Alex Hormozi style.</p>
         </div>
         <div className="rounded-2xl rounded-tl-md bg-white p-4 text-slate-900 shadow-xl">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[.16em] text-slate-400">You</p>
-              <p className="mt-1 font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">Your post</p>
+              <p className="text-xs font-bold uppercase tracking-[.16em] text-slate-400">Draffly</p>
+              <p className="mt-1 font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">Content Written</p>
               <p className="mt-1 text-xs text-slate-500">LinkedIn - Just now</p>
             </div>
             <span className="rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-bold text-emerald-700">READY TO PUBLISH</span>
@@ -351,8 +411,62 @@ export function SecuritySection() {
     ["Visual direction", "$250", "Creative brief or image generation"],
     ["Publishing ops", "$200", "Scheduling, approvals, revisions"],
   ];
+  const savingsBullets = [
+    "No separate researcher, strategist, writer, designer, or publishing tool",
+    "No back-and-forth just to revise one post",
+    "No lost drafts across docs, spreadsheets, and chat threads",
+    "Every run saves the full pipeline history automatically",
+    "Analyze platform wise content performance",
+  ];
 
-  return <section id='saving' className="mx-auto max-w-7xl px-6 py-24"><div className="grid items-center gap-12 rounded-[24px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-8 lg:grid-cols-2 lg:p-12"><div><p className="text-xs font-bold tracking-[.2em] text-[#3B5BDB]">COST COMPARISON</p><h2 className="mt-4 font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">How much will you save?</h2><p className="mt-5 text-lg leading-8 text-slate-600">A freelancer can help with writing, research, creative direction, and scheduling, but every step adds cost, coordination, and turnaround time. Draffly gives you the same end-to-end workflow on demand.</p><div className="mt-8 space-y-4">{["No separate researcher, strategist, writer, designer, or publishing tool", "No back-and-forth just to revise one post", "No lost drafts across docs, spreadsheets, and chat threads", "Every run saves the full pipeline history automatically", "Analyze platform wise content performance"].map((item) => <p key={item} className="flex gap-3 text-slate-700"><CheckIcon className="mt-1 h-5 w-5 shrink-0 text-emerald-600" />{item}</p>)}</div></div><div className="rounded-[22px] border border-slate-200 bg-white p-6 shadow-xl"><p className="text-xs font-bold tracking-[.16em] text-slate-400">TYPICAL MONTHLY OUTSOURCING COST</p><div className="mt-5 space-y-3">{freelancerCosts.map(([label, cost, detail]) => <div key={label} className="flex items-center justify-between gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4"><div><p className="font-semibold text-slate-900">{label}</p><p className="mt-1 text-xs text-slate-500">{detail}</p></div><strong className="text-lg text-slate-900">{cost}</strong></div>)}</div><div className="mt-5 rounded-2xl bg-slate-950 p-5 text-white"><div className="flex items-end justify-between gap-4"><div><p className="text-sm text-slate-300">Freelancer total</p><p className="mt-1 font-[family-name:var(--font-poppins)] text-4xl font-bold">$1,450/mo</p></div><div className="text-right"><p className="text-sm text-slate-300">Draffly Plus</p><p className="mt-1 font-[family-name:var(--font-poppins)] text-3xl font-bold text-emerald-300">$29.99/mo</p></div></div><p className="mt-4 rounded-xl bg-emerald-400/10 p-3 text-sm font-semibold text-emerald-200">Save about $1,420/month before you even count management time.</p></div></div></div></section>;
+  return (
+    <section id="saving" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <div className="grid min-w-0 gap-8 rounded-[24px] border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(360px,480px)] lg:items-center lg:gap-12 lg:p-12">
+        <div className="min-w-0">
+          <p className="text-xs font-bold tracking-[.2em] text-[#3B5BDB]">COST COMPARISON</p>
+          <h2 className="mt-4 font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">How much will you save?</h2>
+          <p className="mt-4 text-base leading-7 text-slate-600 sm:mt-5 sm:text-lg sm:leading-8">
+            A freelancer can help with writing, research, creative direction, and scheduling, but every step adds cost, coordination, and turnaround time. Draffly gives you the same end-to-end workflow on demand.
+          </p>
+          <div className="mt-6 space-y-3 sm:mt-8 sm:space-y-4">
+            {savingsBullets.map((item) => (
+              <p key={item} className="flex gap-3 text-sm leading-6 text-slate-700 sm:text-base">
+                <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600 sm:mt-1" />
+                <span>{item}</span>
+              </p>
+            ))}
+          </div>
+        </div>
+        <div className="min-w-0 rounded-[22px] border border-slate-200 bg-white p-4 shadow-xl sm:p-6">
+          <p className="text-xs font-bold tracking-[.16em] text-slate-400">TYPICAL MONTHLY OUTSOURCING COST</p>
+          <div className="mt-5 space-y-3">
+            {freelancerCosts.map(([label, cost, detail]) => (
+              <div key={label} className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                  <p className="font-semibold text-slate-900">{label}</p>
+                  <p className="mt-1 text-xs leading-5 text-slate-500">{detail}</p>
+                </div>
+                <strong className="text-lg text-slate-900 sm:text-right">{cost}</strong>
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 rounded-2xl bg-slate-950 p-4 text-white sm:p-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm text-slate-300">Freelancer total</p>
+                <p className="mt-1 font-[family-name:var(--font-poppins)] text-3xl font-bold sm:text-4xl">$1,450/mo</p>
+              </div>
+              <div className="sm:text-right">
+                <p className="text-sm text-slate-300">Draffly Plus</p>
+                <p className="mt-1 font-[family-name:var(--font-poppins)] text-2xl font-bold text-emerald-300 sm:text-3xl">$29.99/mo</p>
+              </div>
+            </div>
+            <p className="mt-4 rounded-xl bg-emerald-400/10 p-3 text-sm font-semibold leading-6 text-emerald-200">Save about $1,420/month before you even count management time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function PlansSection() {
@@ -372,16 +486,15 @@ export function FaqSection() {
     ["What happens to my content runs after I use them?", "Runs reset monthly. Every completed run is saved to your library with the full pipeline history, so nothing gets lost."],
     ["Can I change plans or cancel?", "Yes. Everything is self-serve from your billing dashboard. Upgrade, downgrade, or cancel without contacting support."],
   ];
-  return <section id="faq" className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="mb-16 text-center"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">Frequently Asked Questions
-</h2></div><div className="mx-auto max-w-3xl"><div className="space-y-4">{questions.map(([question, answer]) => <div key={question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-slate-900">{question}</h3><p className="mt-4 text-[15px] leading-7 text-slate-600">{answer}</p></div>)}</div><div className="mt-12 text-center"><p className="mb-3 text-slate-600">Still have questions?</p><a href="/plans" className="inline-flex items-center gap-2 font-semibold text-slate-800 transition-colors hover:text-[#0A66C2]">Our Support team is here to help<ArrowRightIcon className="h-4 w-4" /></a></div></div></section>;
+  return <section id="faq" className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12"><div className="mb-10 text-center"><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">Frequently Asked Questions</h2></div><div className="mx-auto max-w-6xl"><div className="grid gap-4 lg:grid-cols-2">{questions.map(([question, answer]) => <div key={question} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><h3 className="font-[family-name:var(--font-poppins)] text-lg font-bold text-slate-900">{question}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p></div>)}</div><div className="mt-8 text-center"><p className="mb-2 text-slate-600">Still have questions?</p><a href="/plans" className="inline-flex items-center gap-2 font-semibold text-slate-800 transition-colors hover:text-[#0A66C2]">Our Support team is here to help<ArrowRightIcon className="h-4 w-4" /></a></div></div></section>;
 }
 
 export function UseCasesSection() {
-  return <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="mb-16 text-center"><p className="mb-3 text-[11px] font-bold tracking-[.22em] text-[#3B5BDB]">WHO IT&apos;S BUILT FOR</p><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">Different people. Same problem.</h2></div><div className="grid gap-6 md:grid-cols-3">{useCases.map((item) => <div key={item.name} className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-[#0A66C2]/30 hover:shadow-lg"><div className="mb-5 flex items-center gap-4"><div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0A66C2] to-[#3B5BDB] text-lg font-bold text-white">{item.name.charAt(0)}</div><div><h3 className="font-bold text-slate-900">{item.name}</h3><p className="text-sm text-slate-500">{item.role}</p></div></div><p className="leading-7 text-slate-600">{item.quote}</p></div>)}</div></section>;
+  return <section className="mx-auto max-w-7xl px-4 pb-4 lg:px-8 lg:pb-6"><div className="mb-16 text-center"><p className="mb-3 text-[11px] font-bold tracking-[.22em] text-[#3B5BDB]">WHO IT&apos;S BUILT FOR</p><h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-slate-800 sm:text-4xl lg:text-5xl">Different people. Same problem.</h2></div><div className="grid gap-6 md:grid-cols-3">{useCases.map((item) => <div key={item.name} className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-[#0A66C2]/30 hover:shadow-lg"><div className="mb-5 flex items-center gap-4"><div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0A66C2] to-[#3B5BDB] text-lg font-bold text-white">{item.name.charAt(0)}</div><div><h3 className="font-bold text-slate-900">{item.name}</h3><p className="text-sm text-slate-500">{item.role}</p></div></div><p className="leading-7 text-slate-600">{item.quote}</p></div>)}</div></section>;
 }
 
 export function CtaSection() {
-  return <section className="px-6 py-24"><div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] bg-[#0a0f1c] px-8 py-20 text-center shadow-[0_30px_60px_-20px_rgba(15,23,42,.45)] lg:px-12"><div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(10,102,194,.35),transparent_28%),radial-gradient(circle_at_82%_22%,rgba(59,91,219,.25),transparent_25%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,.08),transparent_35%)]" /><svg aria-hidden="true" viewBox="0 0 1100 500" className="absolute inset-0 h-full w-full opacity-35"><path d="M80 400 C240 160 420 470 610 210 S880 130 1040 330" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 14" /><path d="M130 120 C360 260 650 50 980 160" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="5 18" /></svg><div className="relative"><p className="text-xs font-bold tracking-[.25em] text-blue-200">YOUR FIRST RUN IS FREE</p><h2 className="mx-auto mt-5 max-w-3xl font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-white sm:text-6xl">Ready to stop doing this manually?</h2><p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-300">Connect your account, pick one topic, and let the Agent cook for you.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="/plans" className="rounded-2xl bg-white px-7 py-4 font-semibold text-slate-900 shadow-xl transition hover:bg-blue-50">Start for Free</a><a href="https://calendly.com/souvikp/draffly-demo" className="rounded-2xl border border-white/20 px-7 py-4 font-semibold text-white transition hover:bg-white/10">Book a demo with Founder</a></div><p className="mt-7 text-sm text-slate-400">No card required. Cancel anytime on paid plans. Trusted by 100+ creators</p></div></div></section>;
+  return <section className="px-6 pt-25 pb-4"><div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] bg-[#0a0f1c] px-8 py-20 text-center shadow-[0_30px_60px_-20px_rgba(15,23,42,.45)] lg:px-12"><div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(10,102,194,.35),transparent_28%),radial-gradient(circle_at_82%_22%,rgba(59,91,219,.25),transparent_25%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,.08),transparent_35%)]" /><svg aria-hidden="true" viewBox="0 0 1100 500" className="absolute inset-0 h-full w-full opacity-35"><path d="M80 400 C240 160 420 470 610 210 S880 130 1040 330" fill="none" stroke="#38bdf8" strokeWidth="2" strokeDasharray="8 14" /><path d="M130 120 C360 260 650 50 980 160" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeDasharray="5 18" /></svg><div className="relative"><p className="text-xs font-bold tracking-[.25em] text-blue-200">YOUR FIRST RUN IS FREE</p><h2 className="mx-auto mt-5 max-w-3xl font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-white sm:text-6xl">Ready to stop doing this manually?</h2><p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-300">Connect your account, pick one topic, and let the Agent cook for you.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="/plans" className="rounded-2xl bg-white px-7 py-4 font-semibold text-slate-900 shadow-xl transition hover:bg-blue-50">Start for Free</a><a href="https://calendly.com/souvikp/draffly-demo" className="rounded-2xl border border-white/20 px-7 py-4 font-semibold text-white transition hover:bg-white/10">Book a demo with Founder</a></div><p className="mt-7 text-sm text-slate-400">No card required. Cancel anytime on paid plans. Trusted by 100+ creators</p></div></div></section>;
 }
 
 export function FooterSection() {
